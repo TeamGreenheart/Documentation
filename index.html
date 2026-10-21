@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Greenheart Documentation</title>
+  <meta name="description" content="User manual for managing the Greenheart Exchange, Greenheart International and Greenheart Travel websites.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/docs.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <a class="brand" href="#top">
+      <img src="assets/img/logo.svg" alt="Greenheart" width="130" height="44">
+      <span>Documentation</span>
+    </a>
+    <label class="site-filter">
+      <span>Showing</span>
+      <select id="site-filter" aria-label="Show documentation for">
+        <option value="all">All sites</option>
+        <option value="exchange">Exchange</option>
+        <option value="org">International</option>
+        <option value="travel">Travel</option>
+      </select>
+    </label>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+    <p class="sidebar-label">Contents</p>
+    <ul class="toc"></ul>
+  </nav>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main class="content" id="top">
+    <article class="manual">
+
+      <header class="manual-hero">
+        <p class="eyebrow">Website Manual</p>
+        <h1>Greenheart Documentation</h1>
+        <p class="lede">How to manage content on the Greenheart Exchange, Greenheart International and Greenheart Travel websites.</p>
+      </header>
+
+      <!--
+        HOW THIS MANUAL IS ORGANIZED
+        - Tasks (how to add/edit) are written once: every site uses the same block editor.
+        - Things that differ by site (content types, blocks, some features) carry a
+          data-sites="exchange org travel" attribute. The script turns that into badges,
+          builds the block availability table, and hides it when a reader filters by site.
+        - Menu entries are generated from .doc-section (h2) and .doc-sub (h3).
+      -->
+
+      <!-- ================= 1. Introduction ================= -->
+      <section class="doc-section" id="introduction">
+        <h2><span class="num">1</span>Introduction</h2>
+        <p>Welcome to the Greenheart website manual. It covers all three Greenheart websites. They share a theme and an editor, but each site has its own content types and blocks.</p>
+
+        <div class="doc-sub" id="intro-sites">
+          <h3>The Three Sites</h3>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Preview</th><th>Site</th><th>Used for</th></tr></thead>
+            <tbody>
+              <tr><td class="site-shot"><a href="https://greenheartexchange.org"><img src="assets/img/sites/exchange.png" width="175" height="350" loading="lazy" alt="Greenheart Exchange homepage"></a></td><td><span class="site-badge exchange">Exchange</span><br><a href="https://greenheartexchange.org">greenheartexchange.org</a></td><td>Inbound cultural exchange. Greenheart sponsors visas for international participants coming to the US: high school exchange, professional development (Teach USA), and intern &amp; trainee (CAP) programs.</td></tr>
+              <tr><td class="site-shot"><a href="https://greenheart.org"><img src="assets/img/sites/org.png" width="175" height="350" loading="lazy" alt="Greenheart International homepage"></a></td><td><span class="site-badge org">International</span><br><a href="https://greenheart.org">greenheart.org</a></td><td>The organization's main site: press, events and careers</td></tr>
+              <tr><td class="site-shot"><a href="https://greenhearttravel.org"><img src="assets/img/sites/travel.png" width="175" height="350" loading="lazy" alt="Greenheart Travel homepage"></a></td><td><span class="site-badge travel">Travel</span><br><a href="https://greenhearttravel.org">greenhearttravel.org</a></td><td>Outbound cultural exchange for US participants going abroad: high school abroad, language camps, a job board for teaching English abroad, and other programs.</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="intro-using">
+          <h3>Using This Manual</h3>
+          <p>The manual is organized by task. Instructions such as <a href="#ae-page">Adding a Page</a> are written once, because the editor works the same on every site. Anything that differs by site has a badge:</p>
+          <p><span class="site-badge exchange">Exchange</span> <span class="site-badge org">International</span> <span class="site-badge travel">Travel</span> <span class="site-badge all">All sites</span></p>
+          <div class="callout tip">
+            <span class="callout-title">Only work on one site?</span>
+            <p>Use the <strong>Showing</strong> menu at the top of the page to pick your site. Content types, blocks and features from the other sites will be hidden. The setting is remembered, and you can share a link to a filtered view (for example <code>?site=travel</code>).</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="intro-access">
+          <h3>Getting Access</h3>
+          <p>Each site has its own login, so you need a separate account for each site you edit. Sign in with your username or email address on the site's login page:</p>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Site</th><th>Login page</th></tr></thead>
+            <tbody>
+              <tr data-sites="exchange"><td><span class="site-badge exchange">Exchange</span></td><td><a href="https://greenheartexchange.org/wp-login.php">greenheartexchange.org/wp-login.php</a></td></tr>
+              <tr data-sites="org"><td><span class="site-badge org">International</span></td><td><a href="https://greenheart.org/wp-login.php">greenheart.org/wp-login.php</a></td></tr>
+              <tr data-sites="travel"><td><span class="site-badge travel">Travel</span></td><td><a href="https://greenhearttravel.org/wp-login.php">greenhearttravel.org/wp-login.php</a></td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Need an account, or access to another site? Contact the site administrator through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>. Say which site or sites you need, and what you'll be working on.</p>
+          <div class="callout tip">
+            <span class="callout-title">Tip</span>
+            <p>Bookmark the login page for each site you edit.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="intro-password">
+          <h3>Resetting Your Password</h3>
+          <p>Each site has its own password, so a reset only changes the password for that site.</p>
+          <ol>
+            <li>Go to the site's <a href="#intro-access">login page</a> and click <strong>Lost your password?</strong> below the login form.</li>
+            <li>Enter your username or the email address on your account, then click <strong>Get New Password</strong>.</li>
+            <li>Check your email for a message with a password reset link. If it doesn't arrive within a few minutes, check your spam or junk folder.</li>
+            <li>Click the link in the email and enter a new password. Use a strong password: WordPress shows a strength meter as you type.</li>
+            <li>Click <strong>Save Password</strong>, then sign in with your new password.</li>
+          </ol>
+          <div class="callout warning">
+            <span class="callout-title">The reset link expires</span>
+            <p>Reset links can only be used once and expire after 24 hours. If yours has expired, start again from step 1.</p>
+          </div>
+          <p>If the reset email never arrives, or your account is locked, contact the site administrator through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>.</p>
+        </div>
+
+        <div class="doc-sub" id="intro-conventions">
+          <h3>Conventions Used</h3>
+          <p>Menu paths look like <strong>Pages › Add New</strong>. Field names and values you type look like <code>this</code>.</p>
+          <div class="callout tip">
+            <span class="callout-title">Tip</span>
+            <p>Tips point out shortcuts and best practices.</p>
+          </div>
+          <div class="callout warning">
+            <span class="callout-title">Caution</span>
+            <p>Cautions point out actions that are hard to undo or that affect the live site.</p>
+          </div>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <!-- ================= 2. Content Types ================= -->
+      <section class="doc-section" id="content-types">
+        <h2><span class="num">2</span>Content Types</h2>
+        <p>A content type is a kind of content, such as a page, a news item or a program. Each site has its own custom content types, but <strong>all of them use the standard block editor</strong>. The steps in <a href="#adding-editing">Adding &amp; Editing Content</a> apply to every type.</p>
+        <p>Most custom types are in the <strong>Greenheart Content</strong> menu (heart icon) in the admin. Some have their own top-level menu item; each entry below says where to find it.</p>
+
+        <div class="doc-sub" id="ct-shared" data-sites="exchange org travel">
+          <h3>Shared Across All Sites</h3>
+
+          <div class="type-entry">
+            <h4>Pages</h4>
+            <p>Permanent content that rarely changes, such as program overviews, About pages and contact information. Pages can be nested to build the site's structure.</p>
+            <dl><dt>Admin menu</dt><dd>Pages</dd></dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Posts</h4>
+            <p>Standard WordPress posts, organized with categories and tags.</p>
+            <dl><dt>Admin menu</dt><dd>Posts</dd></dl>
+            <div class="placeholder">On hold: Posts, News and Press are being reorganized. This will be documented once that work is done.</div>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="ct-exchange" data-sites="exchange">
+          <h3>Greenheart Exchange</h3>
+
+          <div class="type-entry">
+            <h4>News Items</h4>
+            <p>News and announcements.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › News Items</dd>
+              <dt>Filters</dt><dd>Categories, Tags</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Teach USA Positions</h4>
+            <p>Open US school positions for Teach USA, the professional development program for international teachers.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Teach USA Positions</dd>
+              <dt>Filters</dt><dd>Subject, State, Grade level, School type</dd>
+              <dt>Related block</dt><dd><a href="#blk-teachusapositions">Teach USA Positions</a></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>CAP Positions</h4>
+            <p>US host positions for the intern &amp; trainee program.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › CAP Positions</dd>
+              <dt>Filters</dt><dd>Industries, State, Compensation, Training focus, Duration, Season</dd>
+              <dt>Related block</dt><dd><a href="#blk-cappositions">CAP Positions</a></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>CAP Profiles</h4>
+            <p>Profiles of US host organizations in the intern &amp; trainee program.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › CAP Profiles</dd>
+              <dt>Filters</dt><dd>Industries, Country</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Students</h4>
+            <p>Profiles of incoming high school exchange students, shown to prospective US host families.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Students (top-level menu)</dd>
+              <dt>Filters</dt><dd>Gender, Country, Age, Season, Interests, Diet, Allergies</dd>
+              <dt>Related block</dt><dd><a href="#blk-meetourstudents">Meet Our Students</a></dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="ct-org" data-sites="org">
+          <h3>Greenheart International</h3>
+
+          <div class="type-entry">
+            <h4>Press</h4>
+            <p>Press releases and news. The archive page at <code>/press/</code> has an editable intro.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Press</dd>
+              <dt>Web address</dt><dd><code>/press/</code></dd>
+              <dt>Filters</dt><dd>Categories, Tags</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Events</h4>
+            <p>Upcoming and past events.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Events</dd>
+              <dt>Web address</dt><dd><code>/event/…</code>, listing at <code>/events/</code></dd>
+              <dt>Filters</dt><dd>Categories</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Careers</h4>
+            <p>Job openings at Greenheart. Careers don't have a featured image.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Careers</dd>
+              <dt>Web address</dt><dd><code>/career/…</code>, listing at <code>/careers/</code></dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="ct-travel" data-sites="travel">
+          <h3>Greenheart Travel</h3>
+
+          <div class="type-entry">
+            <h4>Programs</h4>
+            <p>Individual outbound programs, such as high school abroad and language camps. A program's web address is built from its <em>Who</em> and <em>What</em> categories, so set both before you publish.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Programs (top-level menu)</dd>
+              <dt>Web address</dt><dd><code>/program/{who}/{what}/…</code></dd>
+              <dt>Filters</dt><dd>Who, What, Where, Duration, When</dd>
+              <dt>Related block</dt><dd><a href="#blk-programswidget">Programs Query</a></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Category Landing Pages</h4>
+            <p>Landing pages for groups of programs.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Category Landing Pages</dd>
+              <dt>Web address</dt><dd><code>/programs/…</code></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Program Thank You Pages</h4>
+            <p>Pages shown after someone submits a program inquiry or application.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Program Thankyou Pages</dd>
+              <dt>Web address</dt><dd><code>/programs/…</code></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry">
+            <h4>Jobs</h4>
+            <p>Teaching English abroad positions, listed on the Travel job board.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Jobs</dd>
+              <dt>Web address</dt><dd><code>/jobs/</code></dd>
+              <dt>Filters</dt><dd>Where, Job type, Job category, Job duration</dd>
+              <dt>Related block</dt><dd><a href="#blk-jobboard">Greenheart Job Board</a></dd>
+            </dl>
+          </div>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <!-- ================= 3. Adding & Editing Content ================= -->
+      <section class="doc-section" id="adding-editing">
+        <h2><span class="num">3</span>Adding &amp; Editing Content</h2>
+        <p>These steps work the same on every site and for every content type. The only difference between types is which settings appear in the sidebar.</p>
+
+        <div class="doc-sub" id="ae-editor">
+          <h3>The Block Editor at a Glance</h3>
+          <p>The editor has three areas:</p>
+          <ul>
+            <li><strong>Top toolbar</strong>: add blocks (<strong>+</strong>), undo/redo, preview, save and publish.</li>
+            <li><strong>Canvas</strong>: the content itself, built from blocks.</li>
+            <li><strong>Settings sidebar</strong>: has two tabs. The content tab (Page, Post, Program and so on) holds the status, featured image, excerpt and filters. The <strong>Block</strong> tab holds settings for the block you've selected.</li>
+          </ul>
+          <div class="placeholder">Add an annotated screenshot of the editor.</div>
+        </div>
+
+        <div class="doc-sub" id="ae-page">
+          <h3>Adding a Page</h3>
+          <ol>
+            <li>In the admin menu, go to <strong>Pages › Add New</strong>.</li>
+            <li>Enter a title.</li>
+            <li>Add content with blocks. Start with a <a href="#blk-greenheartframe">Greenheart Section</a> block to get the standard page layout.</li>
+            <li>To nest the page under another one, choose a <strong>Parent</strong> in the sidebar.</li>
+            <li>Click <strong>Save draft</strong>, then <strong>Preview</strong> to check it.</li>
+            <li>When it's ready, follow <a href="#ae-publish">Publishing &amp; Scheduling</a>.</li>
+          </ol>
+        </div>
+
+        <div class="doc-sub" id="ae-other">
+          <h3>Adding Other Content Types</h3>
+          <p>A news item, position, program or any other type is created the same way as a page:</p>
+          <ol>
+            <li>Find the type in the admin menu. Most are under <strong>Greenheart Content</strong>; see <a href="#content-types">Content Types</a> for where each one is.</li>
+            <li>Click <strong>Add New</strong>, enter a title and build the content with blocks.</li>
+            <li>In the sidebar, fill in the type's settings:
+              <ul>
+                <li><strong>Featured image</strong>: used in listings and cards</li>
+                <li><strong>Excerpt</strong>: the short summary shown in listings</li>
+                <li><strong>Filters</strong>, such as State or Industry: control where the item appears in filtered lists (see <a href="#ae-filters">Categories &amp; Filters</a>)</li>
+              </ul>
+            </li>
+            <li>Save, preview and publish as usual.</li>
+          </ol>
+        </div>
+
+        <div class="doc-sub" id="ae-blocks">
+          <h3>Working with Blocks</h3>
+          <p>To add a block, click <strong>+</strong> and search by name, or type <code>/</code> followed by the block name in an empty paragraph. To move a block, use the arrows in its toolbar or drag its handle. The <strong>List View</strong> button in the top toolbar shows the page's block structure, which is useful for selecting blocks nested inside other blocks.</p>
+          <p>Each site has its own set of Greenheart blocks. If a block mentioned in this manual isn't in the inserter, check the <a href="#bl-availability">block availability table</a>; that block may not exist on your site.</p>
+        </div>
+
+        <div class="doc-sub" id="ae-media">
+          <h3>Images &amp; Media</h3>
+          <p>Upload a new image, or choose one from the Media Library, in any block that has an image field. Always fill in <strong>Alt text</strong> so that people using screen readers know what the image shows.</p>
+          <div class="placeholder">Add recommended image sizes for featured images, cards and section backgrounds.</div>
+        </div>
+
+        <div class="doc-sub" id="ae-filters">
+          <h3>Categories &amp; Filters</h3>
+          <p>Many content types have filters, such as <em>State</em> for Teach USA Positions or <em>Where</em> for Travel programs. Filters control where content appears in filtered listings and search, so fill in every filter that applies before you publish.</p>
+        </div>
+
+        <div class="doc-sub" id="ae-publish">
+          <h3>Publishing &amp; Scheduling</h3>
+          <p>Click <strong>Publish</strong> to make content live right away. To publish later, change the publish date in the sidebar, then click <strong>Schedule</strong>.</p>
+          <div class="callout warning">
+            <span class="callout-title">Caution</span>
+            <p>Changes to published content appear on the live site as soon as you click <strong>Update</strong>.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="ae-revisions">
+          <h3>Revisions &amp; Restoring</h3>
+          <p>For content types that keep revisions, every save stores a copy. Open <strong>Revisions</strong> in the sidebar to compare versions or restore an earlier one.</p>
+          <div class="callout warning">
+            <span class="callout-title">Not every type keeps revisions</span>
+            <p>Revisions are kept for <strong>Pages</strong>, <strong>Posts</strong> and Travel <strong>Programs</strong>. The other custom types don't keep revisions, so changes to them can't be undone after you click Update.</p>
+          </div>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <!-- ================= 4. Block Library ================= -->
+      <section class="doc-section" id="block-library">
+        <h2><span class="num">4</span>Block Library</h2>
+        <p>These are the Greenheart custom blocks, grouped by purpose. Each site has a different set. Badges show where a block is available, and the table below shows all of them at once. You can use any block on any content type.</p>
+        <div class="placeholder">Add a screenshot and the main settings for each block.</div>
+
+        <div class="doc-sub" id="bl-availability">
+          <h3>Block Availability</h3>
+          <p>✓ means the block is available on that site.</p>
+          <div class="table-scroll">
+            <table class="data-table matrix" id="block-matrix"></table>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="bl-layout">
+          <h3>Layout &amp; Structure</h3>
+
+          <div class="block-entry" id="blk-greenheartframe" data-sites="exchange org travel">
+            <h4>Greenheart Section</h4>
+            <p>The main wrapper for a band of page content. Sets the background and spacing. Most pages are a stack of sections.</p>
+          </div>
+          <div class="block-entry" id="blk-greenheartcontainer" data-sites="exchange org travel">
+            <h4>Greenheart Container</h4>
+            <p>The inner content area of a Greenheart Section. It's added automatically inside a section.</p>
+          </div>
+          <div class="block-entry" id="blk-newslayouts" data-sites="exchange org">
+            <h4>Two Column Layouts</h4>
+            <p>Standard Greenheart two-column layouts. You can put the wider column on either side, and make one column sticky. In the 9/3 layout, the small column is hidden on phones.</p>
+          </div>
+          <div class="block-entry" id="blk-childcolumn" data-sites="exchange org">
+            <h4>Custom Column</h4>
+            <p>A single column inside a column layout.</p>
+          </div>
+          <div class="block-entry" id="blk-tabpanels" data-sites="exchange org travel">
+            <h4>Greenheart Page Tabs</h4>
+            <p>Splits content into tabs. Add one <strong>Standard Tab Panel</strong> for each tab.</p>
+          </div>
+          <div class="block-entry" id="blk-tabpanel" data-sites="exchange org travel">
+            <h4>Standard Tab Panel</h4>
+            <p>One tab inside Greenheart Page Tabs.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="bl-cards">
+          <h3>Cards &amp; Calls to Action</h3>
+
+          <div class="block-entry" id="blk-calltoaction" data-sites="exchange org travel">
+            <h4>Greenheart CTA</h4>
+            <p>A call-to-action banner with a button.</p>
+          </div>
+          <div class="block-entry" id="blk-ctacard" data-sites="exchange org">
+            <h4>CTA Card</h4>
+            <p>A card with an image, title, subtitle and button.</p>
+          </div>
+          <div class="block-entry" id="blk-iconcards" data-sites="exchange org travel">
+            <h4>Icon Cards</h4>
+            <p>A row of cards, each with an icon.</p>
+          </div>
+          <div class="block-entry" id="blk-imagecards" data-sites="exchange org travel">
+            <h4>Greenheart Image Cards</h4>
+            <p>A row of cards, each with an image.</p>
+          </div>
+          <div class="block-entry" id="blk-hovercard" data-sites="exchange org">
+            <h4>Greenheart Hovercards</h4>
+            <p>Cards that reveal more content when you hover over them.</p>
+          </div>
+          <div class="block-entry" id="blk-tinycards" data-sites="org">
+            <h4>Tiny Cards</h4>
+            <p>Small, compact cards.</p>
+          </div>
+          <div class="block-entry" id="blk-imagewithtext" data-sites="exchange org travel">
+            <h4>Image and Text Block</h4>
+            <p>An image next to a block of text.</p>
+          </div>
+          <div class="block-entry" id="blk-ghpolaroids" data-sites="exchange travel">
+            <h4>Greenheart Polaroids</h4>
+            <p>Photos displayed in a polaroid style.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="bl-text">
+          <h3>Text, Lists &amp; FAQs</h3>
+
+          <div class="block-entry" id="blk-faq" data-sites="exchange org travel">
+            <h4>Greenheart FAQ</h4>
+            <p>A list of questions and answers. Add one <strong>Greenheart FAQ Panel</strong> for each question.</p>
+          </div>
+          <div class="block-entry" id="blk-faqpanel" data-sites="exchange org travel">
+            <h4>Greenheart FAQ Panel</h4>
+            <p>One question and its answer inside Greenheart FAQ.</p>
+          </div>
+          <div class="block-entry" id="blk-quoteline" data-sites="exchange org">
+            <h4>Greenheart Quotes</h4>
+            <p>A styled quote or testimonial.</p>
+          </div>
+          <div class="block-entry" id="blk-iconlist" data-sites="org travel">
+            <h4>Icon List</h4>
+            <p>A list with an icon on each item.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="bl-news">
+          <h3>News &amp; Posts</h3>
+
+          <div class="block-entry" id="blk-featurednews" data-sites="exchange org travel">
+            <h4>Featured News Widget</h4>
+            <p>Shows selected or recent news.</p>
+          </div>
+          <div class="block-entry" id="blk-featuredposts" data-sites="exchange org travel">
+            <h4>Featured Posts</h4>
+            <p>Shows a selection of posts.</p>
+          </div>
+          <div class="block-entry" id="blk-latestPostsCTA" data-sites="travel">
+            <h4>Latest Posts CTA Layout</h4>
+            <p>The latest posts shown next to a call to action.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="bl-people">
+          <h3>People &amp; Reviews</h3>
+
+          <div class="block-entry" id="blk-meetourstudents" data-sites="exchange travel">
+            <h4>Meet Our Students</h4>
+            <p>Shows student profiles.</p>
+          </div>
+          <div class="block-entry" id="blk-profiles" data-sites="org">
+            <h4>Greenheart Profiles</h4>
+            <p>Profiles of people, such as staff or board members.</p>
+          </div>
+          <div class="block-entry" id="blk-smallcontactgrid" data-sites="exchange">
+            <h4>Contact Grid</h4>
+            <p>A compact grid of contacts.</p>
+          </div>
+          <div class="block-entry" id="blk-meetcoordinator" data-sites="travel">
+            <h4>Meet Your Coordinator</h4>
+            <p>Introduces a program coordinator.</p>
+          </div>
+          <div class="block-entry" id="blk-reviewstop" data-sites="travel">
+            <h4>Review Columns</h4>
+            <p>Reviews shown in columns.</p>
+          </div>
+          <div class="block-entry" id="blk-reviewsbottom" data-sites="travel">
+            <h4>Reviews Card Slider</h4>
+            <p>Reviews shown as cards in a slider.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="bl-listings">
+          <h3>Programs, Positions &amp; Jobs</h3>
+          <p>These blocks list content automatically from a content type. To change what they show, edit the content items themselves and their filters.</p>
+
+          <div class="block-entry" id="blk-teachusapositions" data-sites="exchange">
+            <h4>Teach USA Positions</h4>
+            <p>Lists <a href="#ct-exchange">Teach USA Positions</a>.</p>
+          </div>
+          <div class="block-entry" id="blk-cappositions" data-sites="exchange">
+            <h4>CAP Positions</h4>
+            <p>Lists <a href="#ct-exchange">CAP Positions</a>.</p>
+          </div>
+          <div class="block-entry" id="blk-capparticipants" data-sites="exchange">
+            <h4>CAP Participants</h4>
+            <p>Shows participants in the intern &amp; trainee program.</p>
+          </div>
+          <div class="block-entry" id="blk-programswidget" data-sites="travel">
+            <h4>Programs Query</h4>
+            <p>Lists <a href="#ct-travel">Programs</a>.</p>
+          </div>
+          <div class="block-entry" id="blk-allcategorylist" data-sites="travel">
+            <h4>All Category Index</h4>
+            <p>An index of every category for a chosen content type.</p>
+          </div>
+          <div class="block-entry" id="blk-jobboard" data-sites="travel">
+            <h4>Greenheart Job Board</h4>
+            <p>Lists <a href="#ct-travel">Jobs</a>.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="bl-embeds">
+          <h3>Forms &amp; Embeds</h3>
+
+          <div class="block-entry" id="blk-formassembly" data-sites="travel">
+            <h4>Form Assembly Form</h4>
+            <p>Embeds a FormAssembly form.</p>
+          </div>
+          <div class="block-entry" id="blk-fbgroup" data-sites="travel">
+            <h4>Facebook Group</h4>
+            <p>Promotes or links to a Facebook group.</p>
+          </div>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <!-- ================= 5. Customizing Theme ================= -->
+      <section class="doc-section" id="customizing-theme">
+        <h2><span class="num">5</span>Customizing Theme</h2>
+        <p>All three sites use the same Greenheart theme, with a few site-specific changes. You can adjust some settings yourself; other changes need a developer.</p>
+
+        <div class="doc-sub" id="theme-colors">
+          <h3>Colors</h3>
+          <p>The Greenheart palette is built into the editor. Pick colors from the palette instead of entering custom values, so the site stays on brand.</p>
+        </div>
+
+        <div class="doc-sub" id="theme-typography">
+          <h3>Typography</h3>
+          <p>Headings use <strong>Sanchez</strong> and body text uses <strong>Lato</strong>. Use heading levels in order (H2, then H3) so the page has a clear structure and is accessible.</p>
+        </div>
+
+        <div class="doc-sub" id="theme-header">
+          <h3>Header &amp; Navigation</h3>
+          <p>Edit the main menu under <strong>Appearance › Menus</strong>.</p>
+          <div class="placeholder">Document the header options and menu locations, noting any differences between sites.</div>
+        </div>
+
+        <div class="doc-sub" id="theme-footer">
+          <h3>Footer</h3>
+          <div class="placeholder">Document the editable footer areas: links, social icons and contact details.</div>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <!-- ================= 6. Special Features ================= -->
+      <section class="doc-section" id="special-features">
+        <h2><span class="num">6</span>Special Features</h2>
+        <p>Tools that go beyond the editor itself.</p>
+
+        <div class="doc-sub" id="sf-forms" data-sites="exchange org travel">
+          <h3>Forms</h3>
+          <p>Forms are built in Gravity Forms (<strong>Forms</strong> in the admin menu) and added to a page with the Form block.</p>
+          <div class="placeholder">Document how forms connect to the CRM and who receives submissions on each site.</div>
+        </div>
+
+        <div class="doc-sub" id="sf-tables" data-sites="exchange">
+          <h3>Tables</h3>
+          <p>Tables are managed in TablePress, separately from pages. You insert a table with its block, so one table can appear on several pages.</p>
+        </div>
+
+        <div class="doc-sub" id="sf-redirects" data-sites="exchange org travel">
+          <h3>Redirects</h3>
+          <p>If you change a page's address or delete a page, add a redirect so that old links keep working.</p>
+          <div class="placeholder">Document the redirect tool on each site (the sites use different plugins).</div>
+        </div>
+
+        <div class="doc-sub" id="sf-patterns" data-sites="exchange org travel">
+          <h3>Reusable Patterns</h3>
+          <p>To reuse a group of blocks on other pages, select the blocks and save them as a pattern.</p>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <!-- ================= 7. Reporting Issues ================= -->
+      <section class="doc-section" id="reporting-issues">
+        <h2><span class="num">7</span>Reporting Issues</h2>
+        <p>If something on a site isn't working as expected, report it so it can be fixed quickly.</p>
+
+        <div class="doc-sub" id="ri-before">
+          <h3>Before You Report</h3>
+          <ul>
+            <li>Refresh the page, or try a private/incognito window.</li>
+            <li>Check whether the problem happens in another browser.</li>
+            <li>Check the <a href="#bl-availability">block availability table</a> to make sure the feature exists on that site.</li>
+          </ul>
+        </div>
+
+        <div class="doc-sub" id="ri-submit">
+          <h3>How to Submit</h3>
+          <p>Report website issues through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>. It goes straight to the site administrator. Use one form per issue, and include the details listed under <a href="#ri-include">What to Include</a>.</p>
+          <p>The same form is used for account and login problems; see <a href="#intro-access">Getting Access</a>.</p>
+        </div>
+
+        <div class="doc-sub" id="ri-include">
+          <h3>What to Include</h3>
+          <ul>
+            <li><strong>Which site</strong> (Exchange, International or Travel) and the page URL</li>
+            <li>What you expected to happen, and what happened instead</li>
+            <li>Steps to reproduce the problem</li>
+            <li>A screenshot, and your browser and device</li>
+          </ul>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <!-- ================= 8. Requesting Features ================= -->
+      <section class="doc-section" id="requesting-features">
+        <h2><span class="num">8</span>Requesting Features</h2>
+        <p>Have an idea that would make a site better? Feature requests are welcome.</p>
+
+        <div class="doc-sub" id="rf-how">
+          <h3>How to Request</h3>
+          <p>Describe the problem you're trying to solve, who it would help, and which site or sites it applies to. If a block exists on one site and you'd like it on another, mention that; it's usually a smaller request than a new block.</p>
+          <p>Submit your idea through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UNkpHSU0zWkJESkdKRVcwMEEzSVBPNTJNTS4u" target="_blank" rel="noopener">Feature Request Form</a>. Use one form per request.</p>
+          <div class="callout tip">
+            <span class="callout-title">Something broken?</span>
+            <p>Use the <a href="#ri-submit">Web Issue Form</a> for problems. The Feature Request Form is for new features and improvements.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="rf-next">
+          <h3>What Happens Next</h3>
+          <p>Requests are reviewed and prioritized by impact and effort. You'll hear back on whether and when the feature is planned.</p>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <footer class="site-footer">
+        &copy; Greenheart International. Documentation for internal use.
+      </footer>
+    </article>
+  </main>
+
+  <script src="assets/js/docs.js"></script>
+</body>
+</html>
