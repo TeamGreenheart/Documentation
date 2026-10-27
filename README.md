@@ -4,7 +4,7 @@ User manual for the Greenheart Exchange, Greenheart International and Greenheart
 
 ## Editing and building
 
-Content lives in `src/`. **Don't edit the generated `index.html` files**; they're overwritten on every build.
+Content lives in `src/`. The pages themselves (`index.html` and the page folders) are generated, not stored in git. **Pushing to `main` builds and publishes the site automatically** (see [Publishing](#publishing)).
 
 ```
 src/layout.html              page shell (header, menu, scripts)
@@ -12,21 +12,29 @@ src/sections/<id>.html       one manual section per file
 build.js                     generates the pages
 ```
 
-After editing anything in `src/`, run:
+To build locally, for preview or to check for errors before pushing:
 
 ```
 node build.js
 ```
 
-No dependencies to install. The build stops with an error on duplicate ids and warns about links to ids that don't exist.
+No dependencies to install. The build stops with an error on duplicate ids and warns about links to ids that don't exist. The generated files are ignored by git, so there's nothing to commit after building.
 
-Which sections appear on which page is set in the `PAGES` list at the top of `build.js`. Links between sections are written as plain `#id` in the source; the build turns them into `../<page>/#id` when the target is on another page.
+Which sections appear on which page is set in the `PAGES` list at the top of `build.js`. When you add a page, add its folder to `.gitignore` too. Links between sections are written as plain `#id` in the source; the build turns them into `../<page>/#id` when the target is on another page.
 
 To preview locally, serve the folder (folder URLs like `/customizer/` need a web server):
 
 ```
 python3 -m http.server 8000
 ```
+
+## Publishing
+
+Every push to `main` runs `.github/workflows/pages.yml`, which runs `node build.js _site` and publishes `_site/` to GitHub Pages at https://teamgreenheart.github.io/Documentation/. Only the built pages and `assets/` are published; `src/`, `build.js` and this README are not.
+
+- Progress and errors: the repository's **Actions** tab. If the build fails (for example on a duplicate id), the live site stays as it was.
+- To republish without a new commit: **Actions › Publish docs › Run workflow**.
+- One-time setup: **Settings › Pages › Source** must be set to **GitHub Actions**.
 
 ## Pages
 

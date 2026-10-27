@@ -2,7 +2,8 @@
 /*
  * Builds the documentation site from src/.
  *
- *   node build.js
+ *   node build.js            build into this folder (for local preview)
+ *   node build.js _site      build into _site/ with assets copied, ready to publish
  *
  * Output:
  *   index.html               the full manual (every section on one page)
@@ -19,6 +20,17 @@ const path = require('path');
 
 const ROOT = __dirname;
 const SRC = path.join(ROOT, 'src');
+const OUT = path.resolve(ROOT, process.argv[2] || '.');
+
+// The output folder is emptied before a build, so only allow folders inside this project.
+if (OUT !== ROOT && !OUT.startsWith(ROOT + path.sep)) {
+  console.error(`Output folder must be inside ${ROOT}`);
+  process.exit(1);
+}
+if (['src', 'assets'].includes(path.relative(ROOT, OUT).split(path.sep)[0])) {
+  console.error('Output folder cannot be src/ or assets/');
+  process.exit(1);
+}
 
 // Folder pages, in menu order. Each page shows one or more sections.
 const PAGES = [
@@ -166,11 +178,17 @@ function render({ page, title }) {
   return layout.replace(/\{\{(\w+)\}\}/g, (m, key) => (key in vars ? vars[key] : m));
 }
 
-fs.writeFileSync(path.join(ROOT, 'index.html'), render({ page: null, title: SITE_TITLE }));
+if (OUT !== ROOT) {
+  fs.rmSync(OUT, { recursive: true, force: true });
+  fs.mkdirSync(OUT, { recursive: true });
+  fs.cpSync(path.join(ROOT, 'assets'), path.join(OUT, 'assets'), { recursive: true });
+}
+
+fs.writeFileSync(path.join(OUT, 'index.html'), render({ page: null, title: SITE_TITLE }));
 console.log('index.html');
 
 for (const page of PAGES) {
-  const dir = path.join(ROOT, page.slug);
+  const dir = path.join(OUT, page.slug);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), render({ page, title: `${page.title} – ${SITE_TITLE}` }));
   console.log(page.slug + '/index.html');
