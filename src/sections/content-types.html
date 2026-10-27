@@ -16,7 +16,7 @@
       <h4>Posts</h4>
       <p>Standard WordPress posts, organized with categories and tags.</p>
       <dl><dt>Admin menu</dt><dd>Posts</dd></dl>
-      <div class="placeholder">On hold: Posts, News and Press are being reorganized. This will be documented once that work is done.</div>
+      <div class="placeholder">On hold: how Posts are used alongside each site's news type is being reorganized. This will be documented once that work is done.</div>
     </div>
   </div>
 
@@ -75,14 +75,26 @@
   <div class="doc-sub" id="ct-org" data-sites="org">
     <h3>Greenheart International</h3>
 
-    <div class="type-entry" id="ct-org-news_items" data-anchor="news_items">
-      <h4>Press</h4>
-      <p>Press releases and news. The archive page at <code>/press/</code> has an editable intro.</p>
+    <div class="type-entry" id="ct-org-news_items" data-anchor="news_items news_source">
+      <h4>News Items</h4>
+      <p>News coverage and Greenheart's own press releases, listed on the <code>/press/</code> page. Every news item needs a <strong>News Source</strong>, set in the News Source panel in the editor's sidebar:</p>
+      <ul>
+        <li><strong>In the News</strong>: coverage of Greenheart on another website. Fill in the <strong>News Link</strong> box with the full address of the article (starting with <code>https://</code>). On the <code>/press/</code> page, the item's card opens that article in a new tab.</li>
+        <li><strong>Press Releases</strong>: Greenheart's own announcements. Write the release in the item's content; no link is needed.</li>
+      </ul>
       <dl>
-        <dt>Admin menu</dt><dd>Greenheart Content › Press</dd>
-        <dt>Web address</dt><dd><code>/press/</code></dd>
-        <dt>Filters</dt><dd>Categories, Tags</dd>
+        <dt>Admin menu</dt><dd>Greenheart Content › press</dd>
+        <dt>Web address</dt><dd><code>/press/</code>, filtered by category at <code>/press/{category}/</code></dd>
+        <dt>Filters</dt><dd>News Source, Categories, Tags</dd>
       </dl>
+      <div class="callout warning">
+        <span class="callout-title">In the News items need a link to publish</span>
+        <p>When you tick <strong>In the News</strong>, the News Link box appears and is required. Until it has a full <code>http://</code> or <code>https://</code> address, a warning stays at the top of the editor. You can still save a draft, but you can't publish or schedule the item. On an item that's already published, <strong>Update</strong> is locked until the link is fixed.</p>
+      </div>
+      <div class="callout">
+        <span class="callout-title">Press release pages are being retired</span>
+        <p>Press releases used to be pages under <code>/press-releases/</code>, each with a news item linking to it. Don't create new press release pages. Add a news item with the <strong>Press Releases</strong> source instead. The old pages will be removed.</p>
+      </div>
     </div>
 
     <div class="type-entry" id="ct-events" data-anchor="events">

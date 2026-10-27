@@ -61,7 +61,7 @@ Any page can be opened at a specific entry using the WordPress handle as the has
 
 Query parameters:
 
-- `?site=exchange|org|travel` shows only that site's content. Always pass it: some handles exist on more than one site (`news_items` is News Items on Exchange and Press on International), and the site decides which entry opens.
+- `?site=exchange|org|travel` shows only that site's content. Always pass it: some handles exist on more than one site (`news_items` exists on both Exchange and International, and they work differently), and the site decides which entry opens.
 - `?embed=1` hides the header and menu for use in an iframe, and shows an "Open in full documentation" link that opens the same spot in a new tab.
 
 Example: `/customizer/?site=travel&embed=1#form_pre_footer`
