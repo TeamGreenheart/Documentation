@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Introduction – Greenheart Documentation</title>
+  <meta name="description" content="User manual for managing the Greenheart Exchange, Greenheart International and Greenheart Travel websites.">
+  <script>
+    // Runs before paint so embed mode and the site filter never flash.
+    (function () {
+      var root = document.documentElement;
+      var params = new URLSearchParams(window.location.search);
+      var site = params.get('site');
+      if (!site) { try { site = localStorage.getItem('gh-docs-site'); } catch (e) {} }
+      if (site === 'exchange' || site === 'org' || site === 'travel') root.setAttribute('data-site', site);
+      if (params.has('embed') && params.get('embed') !== '0') root.classList.add('embed');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <a class="brand" href="../">
+      <img src="../assets/img/logo.svg" alt="Greenheart" width="130" height="44">
+      <span>Documentation</span>
+    </a>
+    <label class="site-filter">
+      <span>Showing</span>
+      <select id="site-filter" aria-label="Show documentation for">
+        <option value="all">All sites</option>
+        <option value="exchange">Exchange</option>
+        <option value="org">International</option>
+        <option value="travel">Travel</option>
+      </select>
+    </label>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+    <p class="sidebar-label">Contents</p>
+    <ul class="toc">
+      <li class="toc-section"><div class="toc-row"><a href="#introduction">Introduction</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Introduction sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="#intro-sites">The Three Sites</a></li>
+          <li><a href="#intro-using">Using This Manual</a></li>
+          <li><a href="#intro-access">Getting Access</a></li>
+          <li><a href="#intro-password">Resetting Your Password</a></li>
+          <li><a href="#intro-roles">User Roles</a></li>
+          <li><a href="#intro-conventions">Conventions Used</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../content-types/#content-types">Content Types</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Content Types sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../content-types/#ct-shared">Shared Across All Sites</a></li>
+          <li data-sites="exchange"><a href="../content-types/#ct-exchange">Greenheart Exchange</a></li>
+          <li data-sites="org"><a href="../content-types/#ct-org">Greenheart International</a></li>
+          <li data-sites="travel"><a href="../content-types/#ct-travel">Greenheart Travel</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#adding-editing">Adding &amp; Editing Content</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Adding &amp; Editing Content sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#ae-editor">The Block Editor at a Glance</a></li>
+          <li><a href="../editor/#ae-page">Adding a Page</a></li>
+          <li><a href="../editor/#ae-other">Adding Other Content Types</a></li>
+          <li><a href="../editor/#ae-blocks">Working with Blocks</a></li>
+          <li><a href="../editor/#ae-media">Images &amp; Media</a></li>
+          <li><a href="../editor/#ae-filters">Categories &amp; Filters</a></li>
+          <li><a href="../editor/#ae-publish">Publishing &amp; Scheduling</a></li>
+          <li><a href="../editor/#ae-revisions">Revisions &amp; Restoring</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#block-library">Block Library</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Block Library sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#bl-availability">Block Availability</a></li>
+          <li><a href="../editor/#bl-layout">Layout &amp; Structure</a></li>
+          <li><a href="../editor/#bl-cards">Cards &amp; Calls to Action</a></li>
+          <li><a href="../editor/#bl-text">Text, Lists &amp; FAQs</a></li>
+          <li><a href="../editor/#bl-news">News &amp; Posts</a></li>
+          <li><a href="../editor/#bl-people">People &amp; Reviews</a></li>
+          <li><a href="../editor/#bl-listings">Programs, Positions &amp; Jobs</a></li>
+          <li><a href="../editor/#bl-embeds">Forms &amp; Embeds</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../customizer/#customizing-theme">Customizing Theme</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Customizing Theme sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../customizer/#theme-customizer">Using the Customizer</a></li>
+          <li><a href="../customizer/#theme-colors">Colors</a></li>
+          <li><a href="../customizer/#theme-typography">Typography</a></li>
+          <li><a href="../customizer/#theme-menus">Menus</a></li>
+          <li><a href="../customizer/#theme-homepage">Homepage</a></li>
+          <li><a href="../customizer/#theme-footer">Footer</a></li>
+          <li><a href="../customizer/#theme-sidebar">Sidebar CTAs</a></li>
+          <li data-sites="travel"><a href="../customizer/#theme-programs">Programs Landing Page</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../features/#special-features">Special Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Special Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../features/#sf-brandbar">Greenheart Brand Bar</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-forms">Forms</a></li>
+          <li data-sites="exchange"><a href="../features/#sf-tables">Tables</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-redirects">Redirects</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-patterns">Reusable Patterns</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#reporting-issues">Reporting Issues</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Reporting Issues sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#ri-before">Before You Report</a></li>
+          <li><a href="../support/#ri-submit">How to Submit</a></li>
+          <li><a href="../support/#ri-include">What to Include</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#requesting-features">Requesting Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Requesting Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#rf-how">How to Request</a></li>
+          <li><a href="../support/#rf-next">What Happens Next</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main class="content" id="top">
+    <a class="embed-open" href="#" target="_blank" rel="noopener">Open in full documentation ↗</a>
+    <article class="manual">
+
+      <section class="doc-section" id="introduction">
+        <h2><span class="num">1</span>Introduction</h2>
+        <p>Welcome to the Greenheart website manual. It covers all three Greenheart websites. They share a theme and an editor, but each site has its own content types and blocks.</p>
+
+        <div class="doc-sub" id="intro-sites">
+          <h3>The Three Sites</h3>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Preview</th><th>Site</th><th>Used for</th></tr></thead>
+            <tbody>
+              <tr><td class="site-shot"><a href="https://greenheartexchange.org"><img src="assets/img/sites/exchange.png" width="175" height="350" loading="lazy" alt="Greenheart Exchange homepage"></a></td><td><span class="site-badge exchange">Exchange</span><br><a href="https://greenheartexchange.org">greenheartexchange.org</a></td><td>Inbound cultural exchange. Greenheart sponsors visas for international participants coming to the US: high school exchange, professional development (Teach USA), and intern &amp; trainee (CAP) programs.</td></tr>
+              <tr><td class="site-shot"><a href="https://greenheart.org"><img src="assets/img/sites/org.png" width="175" height="350" loading="lazy" alt="Greenheart International homepage"></a></td><td><span class="site-badge org">International</span><br><a href="https://greenheart.org">greenheart.org</a></td><td>The organization's main site: press, events and careers</td></tr>
+              <tr><td class="site-shot"><a href="https://greenhearttravel.org"><img src="assets/img/sites/travel.png" width="175" height="350" loading="lazy" alt="Greenheart Travel homepage"></a></td><td><span class="site-badge travel">Travel</span><br><a href="https://greenhearttravel.org">greenhearttravel.org</a></td><td>Outbound cultural exchange for US participants going abroad: high school abroad, language camps, a job board for teaching English abroad, and other programs.</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="intro-using">
+          <h3>Using This Manual</h3>
+          <p>The manual is organized by task. Instructions such as <a href="../editor/#ae-page">Adding a Page</a> are written once, because the editor works the same on every site. Anything that differs by site has a badge:</p>
+          <p><span class="site-badge exchange">Exchange</span> <span class="site-badge org">International</span> <span class="site-badge travel">Travel</span> <span class="site-badge all">All sites</span></p>
+          <div class="callout tip">
+            <span class="callout-title">Only work on one site?</span>
+            <p>Use the <strong>Showing</strong> menu at the top of the page to pick your site. Content types, blocks and features from the other sites will be hidden. The setting is remembered, and you can share a link to a filtered view (for example <code>?site=travel</code>).</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="intro-access">
+          <h3>Getting Access</h3>
+          <p>Each site has its own login, so you need a separate account for each site you edit. Sign in with your username or email address on the site's login page:</p>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Site</th><th>Login page</th></tr></thead>
+            <tbody>
+              <tr data-sites="exchange"><td><span class="site-badge exchange">Exchange</span></td><td><a href="https://greenheartexchange.org/wp-login.php">greenheartexchange.org/wp-login.php</a></td></tr>
+              <tr data-sites="org"><td><span class="site-badge org">International</span></td><td><a href="https://greenheart.org/wp-login.php">greenheart.org/wp-login.php</a></td></tr>
+              <tr data-sites="travel"><td><span class="site-badge travel">Travel</span></td><td><a href="https://greenhearttravel.org/wp-login.php">greenhearttravel.org/wp-login.php</a></td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Need an account, or access to another site? Contact the site administrator through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>. Say which site or sites you need, and what you'll be working on.</p>
+          <div class="callout tip">
+            <span class="callout-title">Tip</span>
+            <p>Bookmark the login page for each site you edit.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="intro-password">
+          <h3>Resetting Your Password</h3>
+          <p>Each site has its own password, so a reset only changes the password for that site.</p>
+          <ol>
+            <li>Go to the site's <a href="#intro-access">login page</a> and click <strong>Lost your password?</strong> below the login form.</li>
+            <li>Enter your username or the email address on your account, then click <strong>Get New Password</strong>.</li>
+            <li>Check your email for a message with a password reset link. If it doesn't arrive within a few minutes, check your spam or junk folder.</li>
+            <li>Click the link in the email and enter a new password. Use a strong password: WordPress shows a strength meter as you type.</li>
+            <li>Click <strong>Save Password</strong>, then sign in with your new password.</li>
+          </ol>
+          <div class="callout warning">
+            <span class="callout-title">The reset link expires</span>
+            <p>Reset links can only be used once and expire after 24 hours. If yours has expired, start again from step 1.</p>
+          </div>
+          <p>If the reset email never arrives, or your account is locked, contact the site administrator through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>.</p>
+        </div>
+
+        <div class="doc-sub" id="intro-roles">
+          <h3>User Roles</h3>
+          <p>What you can do on a site depends on your role. Most people will have one of these two:</p>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Role</th><th>Can</th><th>Can't</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Greenheart Editor</strong></td><td>See and edit all content types: pages, posts and every custom type</td><td>Change <a href="../customizer/#customizing-theme">theme settings</a>, menus or widgets</td></tr>
+              <tr><td><strong>Greenheart Admin</strong></td><td>Everything an Editor can do, plus theme settings, menus and widgets</td><td>Manage <a href="../features/#sf-redirects">redirects</a>, security settings, or add and update plugins and themes</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Anything outside your role can be requested through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>.</p>
+        </div>
+
+        <div class="doc-sub" id="intro-conventions">
+          <h3>Conventions Used</h3>
+          <p>Menu paths look like <strong>Pages › Add New</strong>. Field names and values you type look like <code>this</code>.</p>
+          <div class="callout tip">
+            <span class="callout-title">Tip</span>
+            <p>Tips point out shortcuts and best practices.</p>
+          </div>
+          <div class="callout warning">
+            <span class="callout-title">Caution</span>
+            <p>Cautions point out actions that are hard to undo or that affect the live site.</p>
+          </div>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+      <nav class="pager" aria-label="More pages">
+        <a class="pager-next" href="../content-types/"><span>Next</span>Content Types</a>
+      </nav>
+
+      <footer class="site-footer">
+        &copy; Greenheart International. Documentation for internal use.
+      </footer>
+    </article>
+  </main>
+
+  <script src="../assets/js/docs.js"></script>
+</body>
+</html>

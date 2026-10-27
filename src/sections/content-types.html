@@ -1,0 +1,152 @@
+<section class="doc-section" id="content-types">
+  <h2><span class="num">2</span>Content Types</h2>
+  <p>A content type is a kind of content, such as a page, a news item or a program. Each site has its own custom content types, but <strong>all of them use the standard block editor</strong>. The steps in <a href="#adding-editing">Adding &amp; Editing Content</a> apply to every type.</p>
+  <p>Most custom types are in the <strong>Greenheart Content</strong> menu (heart icon) in the admin. Some have their own top-level menu item; each entry below says where to find it.</p>
+
+  <div class="doc-sub" id="ct-shared" data-sites="exchange org travel">
+    <h3>Shared Across All Sites</h3>
+
+    <div class="type-entry" id="ct-page" data-anchor="page">
+      <h4>Pages</h4>
+      <p>Permanent content that rarely changes, such as program overviews, About pages and contact information. Pages can be nested to build the site's structure.</p>
+      <dl><dt>Admin menu</dt><dd>Pages</dd></dl>
+    </div>
+
+    <div class="type-entry" id="ct-post" data-anchor="post">
+      <h4>Posts</h4>
+      <p>Standard WordPress posts, organized with categories and tags.</p>
+      <dl><dt>Admin menu</dt><dd>Posts</dd></dl>
+      <div class="placeholder">On hold: Posts, News and Press are being reorganized. This will be documented once that work is done.</div>
+    </div>
+  </div>
+
+  <div class="doc-sub" id="ct-exchange" data-sites="exchange">
+    <h3>Greenheart Exchange</h3>
+
+    <div class="type-entry" id="ct-exchange-news_items" data-anchor="news_items">
+      <h4>News Items</h4>
+      <p>News and announcements.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › News Items</dd>
+        <dt>Filters</dt><dd>Categories, Tags</dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-tusa_positions" data-anchor="tusa_positions">
+      <h4>Teach USA Positions</h4>
+      <p>Open US school positions for Teach USA, the professional development program for international teachers.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Teach USA Positions</dd>
+        <dt>Filters</dt><dd>Subject, State, Grade level, School type</dd>
+        <dt>Related block</dt><dd><a href="#blk-teachusapositions">Teach USA Positions</a></dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-cap_positions" data-anchor="cap_positions">
+      <h4>CAP Positions</h4>
+      <p>US host positions for the intern &amp; trainee program.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › CAP Positions</dd>
+        <dt>Filters</dt><dd>Industries, State, Compensation, Training focus, Duration, Season</dd>
+        <dt>Related block</dt><dd><a href="#blk-cappositions">CAP Positions</a></dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-cap_profiles" data-anchor="cap_profiles">
+      <h4>CAP Profiles</h4>
+      <p>Profiles of US host organizations in the intern &amp; trainee program.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › CAP Profiles</dd>
+        <dt>Filters</dt><dd>Industries, Country</dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-student" data-anchor="student">
+      <h4>Students</h4>
+      <p>Profiles of incoming high school exchange students, shown to prospective US host families.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Students (top-level menu)</dd>
+        <dt>Filters</dt><dd>Gender, Country, Age, Season, Interests, Diet, Allergies</dd>
+        <dt>Related block</dt><dd><a href="#blk-meetourstudents">Meet Our Students</a></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="doc-sub" id="ct-org" data-sites="org">
+    <h3>Greenheart International</h3>
+
+    <div class="type-entry" id="ct-org-news_items" data-anchor="news_items">
+      <h4>Press</h4>
+      <p>Press releases and news. The archive page at <code>/press/</code> has an editable intro.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Press</dd>
+        <dt>Web address</dt><dd><code>/press/</code></dd>
+        <dt>Filters</dt><dd>Categories, Tags</dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-events" data-anchor="events">
+      <h4>Events</h4>
+      <p>Upcoming and past events.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Events</dd>
+        <dt>Web address</dt><dd><code>/event/…</code>, listing at <code>/events/</code></dd>
+        <dt>Filters</dt><dd>Categories</dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-greenheart_jobs" data-anchor="greenheart_jobs">
+      <h4>Careers</h4>
+      <p>Job openings at Greenheart. Careers don't have a featured image.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Careers</dd>
+        <dt>Web address</dt><dd><code>/career/…</code>, listing at <code>/careers/</code></dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="doc-sub" id="ct-travel" data-sites="travel">
+    <h3>Greenheart Travel</h3>
+
+    <div class="type-entry" id="ct-program" data-anchor="program">
+      <h4>Programs</h4>
+      <p>Individual outbound programs, such as high school abroad and language camps. A program's web address is built from its <em>Who</em> and <em>What</em> categories, so set both before you publish.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Programs (top-level menu)</dd>
+        <dt>Web address</dt><dd><code>/program/{who}/{what}/…</code></dd>
+        <dt>Filters</dt><dd>Who, What, Where, How Long, When</dd>
+        <dt>Related block</dt><dd><a href="#blk-programswidget">Programs Query</a></dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-program_landing_page" data-anchor="program_landing_page">
+      <h4>Category Landing Pages</h4>
+      <p>Landing pages for groups of programs.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Category Landing Pages</dd>
+        <dt>Web address</dt><dd><code>/programs/…</code></dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-program_thanks_page" data-anchor="program_thanks_page">
+      <h4>Program Thank You Pages</h4>
+      <p>Pages shown after someone submits a program inquiry or application.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Program Thankyou Pages</dd>
+        <dt>Web address</dt><dd><code>/programs/…</code></dd>
+      </dl>
+    </div>
+
+    <div class="type-entry" id="ct-jobs" data-anchor="jobs">
+      <h4>Jobs</h4>
+      <p>Teaching English abroad positions, listed on the Travel job board.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Jobs</dd>
+        <dt>Web address</dt><dd><code>/jobs/</code></dd>
+        <dt>Filters</dt><dd>Where, Job type, Job category, Job duration</dd>
+        <dt>Related block</dt><dd><a href="#blk-jobboard">Greenheart Job Board</a></dd>
+      </dl>
+    </div>
+  </div>
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>

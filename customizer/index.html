@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customizing Theme – Greenheart Documentation</title>
+  <meta name="description" content="User manual for managing the Greenheart Exchange, Greenheart International and Greenheart Travel websites.">
+  <script>
+    // Runs before paint so embed mode and the site filter never flash.
+    (function () {
+      var root = document.documentElement;
+      var params = new URLSearchParams(window.location.search);
+      var site = params.get('site');
+      if (!site) { try { site = localStorage.getItem('gh-docs-site'); } catch (e) {} }
+      if (site === 'exchange' || site === 'org' || site === 'travel') root.setAttribute('data-site', site);
+      if (params.has('embed') && params.get('embed') !== '0') root.classList.add('embed');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <a class="brand" href="../">
+      <img src="../assets/img/logo.svg" alt="Greenheart" width="130" height="44">
+      <span>Documentation</span>
+    </a>
+    <label class="site-filter">
+      <span>Showing</span>
+      <select id="site-filter" aria-label="Show documentation for">
+        <option value="all">All sites</option>
+        <option value="exchange">Exchange</option>
+        <option value="org">International</option>
+        <option value="travel">Travel</option>
+      </select>
+    </label>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+    <p class="sidebar-label">Contents</p>
+    <ul class="toc">
+      <li class="toc-section"><div class="toc-row"><a href="../introduction/#introduction">Introduction</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Introduction sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../introduction/#intro-sites">The Three Sites</a></li>
+          <li><a href="../introduction/#intro-using">Using This Manual</a></li>
+          <li><a href="../introduction/#intro-access">Getting Access</a></li>
+          <li><a href="../introduction/#intro-password">Resetting Your Password</a></li>
+          <li><a href="../introduction/#intro-roles">User Roles</a></li>
+          <li><a href="../introduction/#intro-conventions">Conventions Used</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../content-types/#content-types">Content Types</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Content Types sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../content-types/#ct-shared">Shared Across All Sites</a></li>
+          <li data-sites="exchange"><a href="../content-types/#ct-exchange">Greenheart Exchange</a></li>
+          <li data-sites="org"><a href="../content-types/#ct-org">Greenheart International</a></li>
+          <li data-sites="travel"><a href="../content-types/#ct-travel">Greenheart Travel</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#adding-editing">Adding &amp; Editing Content</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Adding &amp; Editing Content sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#ae-editor">The Block Editor at a Glance</a></li>
+          <li><a href="../editor/#ae-page">Adding a Page</a></li>
+          <li><a href="../editor/#ae-other">Adding Other Content Types</a></li>
+          <li><a href="../editor/#ae-blocks">Working with Blocks</a></li>
+          <li><a href="../editor/#ae-media">Images &amp; Media</a></li>
+          <li><a href="../editor/#ae-filters">Categories &amp; Filters</a></li>
+          <li><a href="../editor/#ae-publish">Publishing &amp; Scheduling</a></li>
+          <li><a href="../editor/#ae-revisions">Revisions &amp; Restoring</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#block-library">Block Library</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Block Library sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#bl-availability">Block Availability</a></li>
+          <li><a href="../editor/#bl-layout">Layout &amp; Structure</a></li>
+          <li><a href="../editor/#bl-cards">Cards &amp; Calls to Action</a></li>
+          <li><a href="../editor/#bl-text">Text, Lists &amp; FAQs</a></li>
+          <li><a href="../editor/#bl-news">News &amp; Posts</a></li>
+          <li><a href="../editor/#bl-people">People &amp; Reviews</a></li>
+          <li><a href="../editor/#bl-listings">Programs, Positions &amp; Jobs</a></li>
+          <li><a href="../editor/#bl-embeds">Forms &amp; Embeds</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="#customizing-theme">Customizing Theme</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Customizing Theme sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="#theme-customizer">Using the Customizer</a></li>
+          <li><a href="#theme-colors">Colors</a></li>
+          <li><a href="#theme-typography">Typography</a></li>
+          <li><a href="#theme-menus">Menus</a></li>
+          <li><a href="#theme-homepage">Homepage</a></li>
+          <li><a href="#theme-footer">Footer</a></li>
+          <li><a href="#theme-sidebar">Sidebar CTAs</a></li>
+          <li data-sites="travel"><a href="#theme-programs">Programs Landing Page</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../features/#special-features">Special Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Special Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../features/#sf-brandbar">Greenheart Brand Bar</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-forms">Forms</a></li>
+          <li data-sites="exchange"><a href="../features/#sf-tables">Tables</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-redirects">Redirects</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-patterns">Reusable Patterns</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#reporting-issues">Reporting Issues</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Reporting Issues sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#ri-before">Before You Report</a></li>
+          <li><a href="../support/#ri-submit">How to Submit</a></li>
+          <li><a href="../support/#ri-include">What to Include</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#requesting-features">Requesting Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Requesting Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#rf-how">How to Request</a></li>
+          <li><a href="../support/#rf-next">What Happens Next</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main class="content" id="top">
+    <a class="embed-open" href="#" target="_blank" rel="noopener">Open in full documentation ↗</a>
+    <article class="manual">
+
+      <section class="doc-section" id="customizing-theme">
+        <h2><span class="num">5</span>Customizing Theme</h2>
+        <p>All three sites use the same Greenheart theme. Site-wide elements such as the menus, footer and homepage are managed outside the block editor, mostly in the <strong>Customizer</strong> (<strong>Appearance › Customize</strong>).</p>
+        <div class="callout">
+          <span class="callout-title">Greenheart Admin role required</span>
+          <p>Menus and Customizer settings can only be changed by a <a href="../introduction/#intro-roles">Greenheart Admin</a>. If you're a Greenheart Editor, request changes through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>.</p>
+        </div>
+
+        <div class="doc-sub" id="theme-customizer">
+          <h3>Using the Customizer</h3>
+          <ol>
+            <li>Go to <strong>Appearance › Customize</strong>. A preview of the site opens, with the settings in a panel on the left.</li>
+            <li>Open a panel (for example <strong>Theme Footer</strong>), then a section, and make your changes. The preview updates as you go.</li>
+            <li>Nothing is live until you click <strong>Publish</strong>. To leave without saving, close the Customizer with the <strong>×</strong> at the top left.</li>
+          </ol>
+        </div>
+
+        <div class="doc-sub" id="theme-colors">
+          <h3>Colors</h3>
+          <p>The Greenheart palette is built into the editor. Pick colors from the palette instead of entering custom values, so the site stays on brand.</p>
+        </div>
+
+        <div class="doc-sub" id="theme-typography">
+          <h3>Typography</h3>
+          <p>Headings use <strong>Sanchez</strong> and body text uses <strong>Lato</strong>. Use heading levels in order (H2, then H3) so the page has a clear structure and is accessible.</p>
+        </div>
+
+        <div class="doc-sub" id="theme-menus" data-anchor="nav_menus nav-menus">
+          <h3>Menus</h3>
+          <p>Each site has two menus, managed under <strong>Appearance › Menus</strong>:</p>
+          <ul>
+            <li><strong>Primary Menu</strong>: the main navigation in the header</li>
+            <li><strong>Footer Menu</strong>: the links in the footer</li>
+          </ul>
+          <ol>
+            <li>Choose the menu to edit from the <strong>Select a menu to edit</strong> dropdown, then click <strong>Select</strong>.</li>
+            <li>Add pages, content items or custom links from the panels on the left.</li>
+            <li>Drag items to reorder them. Drag an item slightly to the right to make it a sub-item.</li>
+            <li>Click <strong>Save Menu</strong>.</li>
+          </ol>
+          <div class="callout tip">
+            <span class="callout-title">Tip</span>
+            <p>When you rename or move a page, its menu link updates automatically. Custom links don't, so check them after you change a page's address.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="theme-homepage">
+          <h3>Homepage</h3>
+          <p>The top of each homepage is set in the Customizer, not in the page editor.</p>
+
+          <div class="type-entry" id="cz-homepage_panel" data-anchor="homepage_panel homepage_slider homepage_settings" data-sites="exchange org travel">
+            <h4>Homepage Slider</h4>
+            <p>The rotating slides at the top of the homepage. Add and order slides under <strong>Slides</strong>; set the title, subtitle and aspect ratio under <strong>Homepage Slider Settings</strong>.</p>
+            <dl><dt>Customizer</dt><dd>Homepage Slider</dd></dl>
+          </div>
+
+          <div class="type-entry" id="cz-theme_homepage_video" data-anchor="theme_homepage_video homepage_video" data-sites="org travel">
+            <h4>Homepage Video</h4>
+            <p>A background video with the site title and subtitle. It takes separate video files and poster images for desktop and mobile.</p>
+            <dl><dt>Customizer</dt><dd>Theme Homepage Video Section › Homepage Video</dd></dl>
+          </div>
+
+          <div class="type-entry" id="cz-homepage_socialproof" data-anchor="homepage_socialproof theme_stats" data-sites="exchange">
+            <h4>Social Proof &amp; Site Stats</h4>
+            <p>The social media follower counts and the Greenheart stats bar (hosts, participants, countries) on the homepage.</p>
+            <dl><dt>Customizer</dt><dd>Homepage Slider › Social Proof Widget, Site Stats Widget</dd></dl>
+          </div>
+
+        </div>
+
+        <div class="doc-sub" id="theme-footer" data-anchor="theme_footer_panel">
+          <h3>Footer</h3>
+          <p>Footer content is under <strong>Theme Footer</strong> in the Customizer. The links come from the <a href="#theme-menus">Footer Menu</a>.</p>
+
+          <div class="type-entry" id="cz-socialmedia_section" data-anchor="socialmedia_section theme_footer_socialmedia theme_address theme_address2 theme_phone theme_contact_email" data-sites="exchange org travel">
+            <h4>Contact Details &amp; Social Media</h4>
+            <p>The address, phone number, contact email and social media links shown in the footer.</p>
+            <dl><dt>Customizer</dt><dd>Theme Footer › Social Media, Physical Address, Physical Address 2, Phone, Contact Email</dd></dl>
+          </div>
+
+          <div class="type-entry" id="cz-partnership_section" data-anchor="partnership_section" data-sites="exchange">
+            <h4>Partnerships &amp; Affiliations</h4>
+            <p>The partner and affiliation logos in the footer.</p>
+            <dl><dt>Customizer</dt><dd>Theme Footer › Partnerships &amp; Affiliations</dd></dl>
+          </div>
+
+          <div class="type-entry" id="cz-theme_pre_footer" data-anchor="theme_pre_footer form_pre_footer" data-sites="travel">
+            <h4>Pre-Footer</h4>
+            <p>The banner above the footer: a call to action with an image and button, or a contact form.</p>
+            <dl><dt>Customizer</dt><dd>Theme Footer › Theme Pre Footer, Contact Form Pre Footer</dd></dl>
+          </div>
+
+          <div class="type-entry" id="cz-theme_footer_info" data-anchor="theme_footer_info" data-sites="travel">
+            <h4>Footer Info</h4>
+            <p>The footer column title, address lines and phone number.</p>
+            <dl><dt>Customizer</dt><dd>Theme Footer › Theme Footer Info</dd></dl>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="theme-sidebar" data-anchor="sidebar_panel sidebars">
+          <h3>Sidebar CTAs</h3>
+          <p>Calls to action shown in page sidebars.</p>
+          <dl class="inline-dl"><dt>Customizer</dt><dd>Sidebars › Sidebar CTAs</dd></dl>
+        </div>
+
+        <div class="doc-sub" id="theme-programs" data-anchor="theme_programs_panel theme_programs" data-sites="travel">
+          <h3>Programs Landing Page</h3>
+          <p>The image and subtitle on the Programs landing page.</p>
+          <dl class="inline-dl"><dt>Customizer</dt><dd>Programs Options › Programs Landing Page</dd></dl>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+      <nav class="pager" aria-label="More pages">
+        <a class="pager-prev" href="../editor/"><span>Previous</span>Editor & Blocks</a>
+        <a class="pager-next" href="../features/"><span>Next</span>Special Features</a>
+      </nav>
+
+      <footer class="site-footer">
+        &copy; Greenheart International. Documentation for internal use.
+      </footer>
+    </article>
+  </main>
+
+  <script src="../assets/js/docs.js"></script>
+</body>
+</html>

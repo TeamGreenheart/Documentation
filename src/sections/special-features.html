@@ -1,0 +1,85 @@
+<section class="doc-section" id="special-features">
+  <h2><span class="num">6</span>Special Features</h2>
+  <p>Tools that go beyond the editor itself.</p>
+
+  <div class="doc-sub" id="sf-brandbar" data-sites="exchange org travel">
+    <h3>Greenheart Brand Bar</h3>
+    <p>The thin green bar across the very top of every page, with links such as <strong>Programs in U.S.</strong>, <strong>Programs Abroad</strong>, <strong>Login</strong> and <strong>Donate</strong>, is the Greenheart Brand Bar. It links the Greenheart sites together and is managed centrally, not in the theme or the menus.</p>
+    <p>To request a change, use the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>.</p>
+  </div>
+
+  <div class="doc-sub" id="sf-forms" data-sites="exchange org travel">
+    <h3>Forms</h3>
+    <p>All three sites have <strong>Gravity Forms</strong> (<strong>Forms</strong> in the admin menu). To add a Gravity Form to a page, insert the <strong>Form</strong> block and choose the form. Beyond that, each site handles forms differently:</p>
+
+    <div class="type-entry" data-sites="exchange">
+      <h4>Exchange</h4>
+      <p>Program <strong>apply forms</strong> are built in Gravity Forms and integrated with the site. Exchange also supports:</p>
+      <ul>
+        <li>Embedded FormAssembly forms</li>
+        <li>Embedded Zoho forms</li>
+        <li>Links to external forms</li>
+        <li>Salesforce integrations through Gravity Forms</li>
+      </ul>
+    </div>
+
+    <div class="type-entry" data-sites="org">
+      <h4>International</h4>
+      <p>Gravity Forms only.</p>
+    </div>
+
+    <div class="type-entry" data-sites="travel">
+      <h4>Travel</h4>
+      <p><strong>FormAssembly</strong> is the default. Embed a form with the <a href="#blk-formassembly">Form Assembly Form</a> block. Gravity Forms is also available, either as a block or in the footer (see <a href="#theme-footer">Contact Form Pre Footer</a>).</p>
+    </div>
+  </div>
+
+  <div class="doc-sub" id="sf-tables" data-sites="exchange">
+    <h3>Tables</h3>
+    <p>Tables are managed in TablePress, separately from pages. You insert a table with its block, so one table can appear on several pages.</p>
+  </div>
+
+  <div class="doc-sub" id="sf-redirects" data-sites="exchange org travel">
+    <h3>Redirects</h3>
+    <p>A redirect automatically sends visitors from an old web address to a new one, so that bookmarks, search results and links from other sites keep working.</p>
+
+    <h4>When you need one</h4>
+    <ul>
+      <li>You change a page's <strong>URL slug</strong>, or move it under a different parent page.</li>
+      <li>You delete or unpublish a page that people may still link to.</li>
+      <li>You replace an old page with a new one at a different address.</li>
+    </ul>
+
+    <h4>Requesting a redirect</h4>
+    <p>Only administrators can add redirects for now. To request one, use the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a> and include:</p>
+    <ul>
+      <li>Which site</li>
+      <li>The <strong>old</strong> address (copy it from the browser before you change or delete the page)</li>
+      <li>The <strong>new</strong> address it should go to</li>
+      <li>When the change will happen, so the redirect can go live at the same time</li>
+    </ul>
+    <div class="callout tip">
+      <span class="callout-title">Tip</span>
+      <p>Request the redirect <em>before</em> you change the address, and copy the old address first. Once it's changed, the old one is easy to lose.</p>
+    </div>
+
+    <h4>For administrators</h4>
+    <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Site</th><th>Plugin</th><th>Where to find it</th></tr></thead>
+      <tbody>
+        <tr data-sites="exchange"><td><span class="site-badge exchange">Exchange</span></td><td>Redirection</td><td><strong>Tools › Redirection</strong></td></tr>
+        <tr data-sites="org"><td><span class="site-badge org">International</span></td><td>Redirection</td><td><strong>Tools › Redirection</strong></td></tr>
+        <tr data-sites="travel"><td><span class="site-badge travel">Travel</span></td><td>Advanced 301 and 302 Redirect</td><td><strong>Settings › 301/302 Redirection</strong></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Use a <strong>301 (permanent)</strong> redirect unless the change is temporary. On International, use Redirection, not Simple 301 Redirects.</p>
+  </div>
+
+  <div class="doc-sub" id="sf-patterns" data-sites="exchange org travel">
+    <h3>Reusable Patterns</h3>
+    <p>To reuse a group of blocks on other pages, select the blocks and save them as a pattern.</p>
+  </div>
+  <a class="back-to-top" href="#top">↑ Back to top</a>
+</section>

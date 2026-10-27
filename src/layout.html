@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <script>
+    // Runs before paint so embed mode and the site filter never flash.
+    (function () {
+      var root = document.documentElement;
+      var params = new URLSearchParams(window.location.search);
+      var site = params.get('site');
+      if (!site) { try { site = localStorage.getItem('gh-docs-site'); } catch (e) {} }
+      if (site === 'exchange' || site === 'org' || site === 'travel') root.setAttribute('data-site', site);
+      if (params.has('embed') && params.get('embed') !== '0') root.classList.add('embed');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{base}}assets/css/docs.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <a class="brand" href="{{home}}">
+      <img src="{{base}}assets/img/logo.svg" alt="Greenheart" width="130" height="44">
+      <span>Documentation</span>
+    </a>
+    <label class="site-filter">
+      <span>Showing</span>
+      <select id="site-filter" aria-label="Show documentation for">
+        <option value="all">All sites</option>
+        <option value="exchange">Exchange</option>
+        <option value="org">International</option>
+        <option value="travel">Travel</option>
+      </select>
+    </label>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+    <p class="sidebar-label">Contents</p>
+    <ul class="toc">
+{{toc}}
+    </ul>
+  </nav>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main class="content" id="top">
+    <a class="embed-open" href="#" target="_blank" rel="noopener">Open in full documentation ↗</a>
+    <article class="manual">
+{{hero}}
+{{content}}
+      <footer class="site-footer">
+        &copy; Greenheart International. Documentation for internal use.
+      </footer>
+    </article>
+  </main>
+
+  <script src="{{base}}assets/js/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content Types – Greenheart Documentation</title>
+  <meta name="description" content="User manual for managing the Greenheart Exchange, Greenheart International and Greenheart Travel websites.">
+  <script>
+    // Runs before paint so embed mode and the site filter never flash.
+    (function () {
+      var root = document.documentElement;
+      var params = new URLSearchParams(window.location.search);
+      var site = params.get('site');
+      if (!site) { try { site = localStorage.getItem('gh-docs-site'); } catch (e) {} }
+      if (site === 'exchange' || site === 'org' || site === 'travel') root.setAttribute('data-site', site);
+      if (params.has('embed') && params.get('embed') !== '0') root.classList.add('embed');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <a class="brand" href="../">
+      <img src="../assets/img/logo.svg" alt="Greenheart" width="130" height="44">
+      <span>Documentation</span>
+    </a>
+    <label class="site-filter">
+      <span>Showing</span>
+      <select id="site-filter" aria-label="Show documentation for">
+        <option value="all">All sites</option>
+        <option value="exchange">Exchange</option>
+        <option value="org">International</option>
+        <option value="travel">Travel</option>
+      </select>
+    </label>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+    <p class="sidebar-label">Contents</p>
+    <ul class="toc">
+      <li class="toc-section"><div class="toc-row"><a href="../introduction/#introduction">Introduction</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Introduction sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../introduction/#intro-sites">The Three Sites</a></li>
+          <li><a href="../introduction/#intro-using">Using This Manual</a></li>
+          <li><a href="../introduction/#intro-access">Getting Access</a></li>
+          <li><a href="../introduction/#intro-password">Resetting Your Password</a></li>
+          <li><a href="../introduction/#intro-roles">User Roles</a></li>
+          <li><a href="../introduction/#intro-conventions">Conventions Used</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="#content-types">Content Types</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Content Types sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="#ct-shared">Shared Across All Sites</a></li>
+          <li data-sites="exchange"><a href="#ct-exchange">Greenheart Exchange</a></li>
+          <li data-sites="org"><a href="#ct-org">Greenheart International</a></li>
+          <li data-sites="travel"><a href="#ct-travel">Greenheart Travel</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#adding-editing">Adding &amp; Editing Content</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Adding &amp; Editing Content sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#ae-editor">The Block Editor at a Glance</a></li>
+          <li><a href="../editor/#ae-page">Adding a Page</a></li>
+          <li><a href="../editor/#ae-other">Adding Other Content Types</a></li>
+          <li><a href="../editor/#ae-blocks">Working with Blocks</a></li>
+          <li><a href="../editor/#ae-media">Images &amp; Media</a></li>
+          <li><a href="../editor/#ae-filters">Categories &amp; Filters</a></li>
+          <li><a href="../editor/#ae-publish">Publishing &amp; Scheduling</a></li>
+          <li><a href="../editor/#ae-revisions">Revisions &amp; Restoring</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#block-library">Block Library</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Block Library sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#bl-availability">Block Availability</a></li>
+          <li><a href="../editor/#bl-layout">Layout &amp; Structure</a></li>
+          <li><a href="../editor/#bl-cards">Cards &amp; Calls to Action</a></li>
+          <li><a href="../editor/#bl-text">Text, Lists &amp; FAQs</a></li>
+          <li><a href="../editor/#bl-news">News &amp; Posts</a></li>
+          <li><a href="../editor/#bl-people">People &amp; Reviews</a></li>
+          <li><a href="../editor/#bl-listings">Programs, Positions &amp; Jobs</a></li>
+          <li><a href="../editor/#bl-embeds">Forms &amp; Embeds</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../customizer/#customizing-theme">Customizing Theme</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Customizing Theme sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../customizer/#theme-customizer">Using the Customizer</a></li>
+          <li><a href="../customizer/#theme-colors">Colors</a></li>
+          <li><a href="../customizer/#theme-typography">Typography</a></li>
+          <li><a href="../customizer/#theme-menus">Menus</a></li>
+          <li><a href="../customizer/#theme-homepage">Homepage</a></li>
+          <li><a href="../customizer/#theme-footer">Footer</a></li>
+          <li><a href="../customizer/#theme-sidebar">Sidebar CTAs</a></li>
+          <li data-sites="travel"><a href="../customizer/#theme-programs">Programs Landing Page</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../features/#special-features">Special Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Special Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../features/#sf-brandbar">Greenheart Brand Bar</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-forms">Forms</a></li>
+          <li data-sites="exchange"><a href="../features/#sf-tables">Tables</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-redirects">Redirects</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-patterns">Reusable Patterns</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#reporting-issues">Reporting Issues</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Reporting Issues sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#ri-before">Before You Report</a></li>
+          <li><a href="../support/#ri-submit">How to Submit</a></li>
+          <li><a href="../support/#ri-include">What to Include</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#requesting-features">Requesting Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Requesting Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#rf-how">How to Request</a></li>
+          <li><a href="../support/#rf-next">What Happens Next</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main class="content" id="top">
+    <a class="embed-open" href="#" target="_blank" rel="noopener">Open in full documentation ↗</a>
+    <article class="manual">
+
+      <section class="doc-section" id="content-types">
+        <h2><span class="num">2</span>Content Types</h2>
+        <p>A content type is a kind of content, such as a page, a news item or a program. Each site has its own custom content types, but <strong>all of them use the standard block editor</strong>. The steps in <a href="../editor/#adding-editing">Adding &amp; Editing Content</a> apply to every type.</p>
+        <p>Most custom types are in the <strong>Greenheart Content</strong> menu (heart icon) in the admin. Some have their own top-level menu item; each entry below says where to find it.</p>
+
+        <div class="doc-sub" id="ct-shared" data-sites="exchange org travel">
+          <h3>Shared Across All Sites</h3>
+
+          <div class="type-entry" id="ct-page" data-anchor="page">
+            <h4>Pages</h4>
+            <p>Permanent content that rarely changes, such as program overviews, About pages and contact information. Pages can be nested to build the site's structure.</p>
+            <dl><dt>Admin menu</dt><dd>Pages</dd></dl>
+          </div>
+
+          <div class="type-entry" id="ct-post" data-anchor="post">
+            <h4>Posts</h4>
+            <p>Standard WordPress posts, organized with categories and tags.</p>
+            <dl><dt>Admin menu</dt><dd>Posts</dd></dl>
+            <div class="placeholder">On hold: Posts, News and Press are being reorganized. This will be documented once that work is done.</div>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="ct-exchange" data-sites="exchange">
+          <h3>Greenheart Exchange</h3>
+
+          <div class="type-entry" id="ct-exchange-news_items" data-anchor="news_items">
+            <h4>News Items</h4>
+            <p>News and announcements.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › News Items</dd>
+              <dt>Filters</dt><dd>Categories, Tags</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-tusa_positions" data-anchor="tusa_positions">
+            <h4>Teach USA Positions</h4>
+            <p>Open US school positions for Teach USA, the professional development program for international teachers.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Teach USA Positions</dd>
+              <dt>Filters</dt><dd>Subject, State, Grade level, School type</dd>
+              <dt>Related block</dt><dd><a href="../editor/#blk-teachusapositions">Teach USA Positions</a></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-cap_positions" data-anchor="cap_positions">
+            <h4>CAP Positions</h4>
+            <p>US host positions for the intern &amp; trainee program.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › CAP Positions</dd>
+              <dt>Filters</dt><dd>Industries, State, Compensation, Training focus, Duration, Season</dd>
+              <dt>Related block</dt><dd><a href="../editor/#blk-cappositions">CAP Positions</a></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-cap_profiles" data-anchor="cap_profiles">
+            <h4>CAP Profiles</h4>
+            <p>Profiles of US host organizations in the intern &amp; trainee program.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › CAP Profiles</dd>
+              <dt>Filters</dt><dd>Industries, Country</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-student" data-anchor="student">
+            <h4>Students</h4>
+            <p>Profiles of incoming high school exchange students, shown to prospective US host families.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Students (top-level menu)</dd>
+              <dt>Filters</dt><dd>Gender, Country, Age, Season, Interests, Diet, Allergies</dd>
+              <dt>Related block</dt><dd><a href="../editor/#blk-meetourstudents">Meet Our Students</a></dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="ct-org" data-sites="org">
+          <h3>Greenheart International</h3>
+
+          <div class="type-entry" id="ct-org-news_items" data-anchor="news_items">
+            <h4>Press</h4>
+            <p>Press releases and news. The archive page at <code>/press/</code> has an editable intro.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Press</dd>
+              <dt>Web address</dt><dd><code>/press/</code></dd>
+              <dt>Filters</dt><dd>Categories, Tags</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-events" data-anchor="events">
+            <h4>Events</h4>
+            <p>Upcoming and past events.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Events</dd>
+              <dt>Web address</dt><dd><code>/event/…</code>, listing at <code>/events/</code></dd>
+              <dt>Filters</dt><dd>Categories</dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-greenheart_jobs" data-anchor="greenheart_jobs">
+            <h4>Careers</h4>
+            <p>Job openings at Greenheart. Careers don't have a featured image.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Careers</dd>
+              <dt>Web address</dt><dd><code>/career/…</code>, listing at <code>/careers/</code></dd>
+            </dl>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="ct-travel" data-sites="travel">
+          <h3>Greenheart Travel</h3>
+
+          <div class="type-entry" id="ct-program" data-anchor="program">
+            <h4>Programs</h4>
+            <p>Individual outbound programs, such as high school abroad and language camps. A program's web address is built from its <em>Who</em> and <em>What</em> categories, so set both before you publish.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Programs (top-level menu)</dd>
+              <dt>Web address</dt><dd><code>/program/{who}/{what}/…</code></dd>
+              <dt>Filters</dt><dd>Who, What, Where, How Long, When</dd>
+              <dt>Related block</dt><dd><a href="../editor/#blk-programswidget">Programs Query</a></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-program_landing_page" data-anchor="program_landing_page">
+            <h4>Category Landing Pages</h4>
+            <p>Landing pages for groups of programs.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Category Landing Pages</dd>
+              <dt>Web address</dt><dd><code>/programs/…</code></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-program_thanks_page" data-anchor="program_thanks_page">
+            <h4>Program Thank You Pages</h4>
+            <p>Pages shown after someone submits a program inquiry or application.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Program Thankyou Pages</dd>
+              <dt>Web address</dt><dd><code>/programs/…</code></dd>
+            </dl>
+          </div>
+
+          <div class="type-entry" id="ct-jobs" data-anchor="jobs">
+            <h4>Jobs</h4>
+            <p>Teaching English abroad positions, listed on the Travel job board.</p>
+            <dl>
+              <dt>Admin menu</dt><dd>Greenheart Content › Jobs</dd>
+              <dt>Web address</dt><dd><code>/jobs/</code></dd>
+              <dt>Filters</dt><dd>Where, Job type, Job category, Job duration</dd>
+              <dt>Related block</dt><dd><a href="../editor/#blk-jobboard">Greenheart Job Board</a></dd>
+            </dl>
+          </div>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+      <nav class="pager" aria-label="More pages">
+        <a class="pager-prev" href="../introduction/"><span>Previous</span>Introduction</a>
+        <a class="pager-next" href="../editor/"><span>Next</span>Editor & Blocks</a>
+      </nav>
+
+      <footer class="site-footer">
+        &copy; Greenheart International. Documentation for internal use.
+      </footer>
+    </article>
+  </main>
+
+  <script src="../assets/js/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Special Features – Greenheart Documentation</title>
+  <meta name="description" content="User manual for managing the Greenheart Exchange, Greenheart International and Greenheart Travel websites.">
+  <script>
+    // Runs before paint so embed mode and the site filter never flash.
+    (function () {
+      var root = document.documentElement;
+      var params = new URLSearchParams(window.location.search);
+      var site = params.get('site');
+      if (!site) { try { site = localStorage.getItem('gh-docs-site'); } catch (e) {} }
+      if (site === 'exchange' || site === 'org' || site === 'travel') root.setAttribute('data-site', site);
+      if (params.has('embed') && params.get('embed') !== '0') root.classList.add('embed');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <a class="brand" href="../">
+      <img src="../assets/img/logo.svg" alt="Greenheart" width="130" height="44">
+      <span>Documentation</span>
+    </a>
+    <label class="site-filter">
+      <span>Showing</span>
+      <select id="site-filter" aria-label="Show documentation for">
+        <option value="all">All sites</option>
+        <option value="exchange">Exchange</option>
+        <option value="org">International</option>
+        <option value="travel">Travel</option>
+      </select>
+    </label>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+    <p class="sidebar-label">Contents</p>
+    <ul class="toc">
+      <li class="toc-section"><div class="toc-row"><a href="../introduction/#introduction">Introduction</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Introduction sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../introduction/#intro-sites">The Three Sites</a></li>
+          <li><a href="../introduction/#intro-using">Using This Manual</a></li>
+          <li><a href="../introduction/#intro-access">Getting Access</a></li>
+          <li><a href="../introduction/#intro-password">Resetting Your Password</a></li>
+          <li><a href="../introduction/#intro-roles">User Roles</a></li>
+          <li><a href="../introduction/#intro-conventions">Conventions Used</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../content-types/#content-types">Content Types</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Content Types sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../content-types/#ct-shared">Shared Across All Sites</a></li>
+          <li data-sites="exchange"><a href="../content-types/#ct-exchange">Greenheart Exchange</a></li>
+          <li data-sites="org"><a href="../content-types/#ct-org">Greenheart International</a></li>
+          <li data-sites="travel"><a href="../content-types/#ct-travel">Greenheart Travel</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#adding-editing">Adding &amp; Editing Content</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Adding &amp; Editing Content sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#ae-editor">The Block Editor at a Glance</a></li>
+          <li><a href="../editor/#ae-page">Adding a Page</a></li>
+          <li><a href="../editor/#ae-other">Adding Other Content Types</a></li>
+          <li><a href="../editor/#ae-blocks">Working with Blocks</a></li>
+          <li><a href="../editor/#ae-media">Images &amp; Media</a></li>
+          <li><a href="../editor/#ae-filters">Categories &amp; Filters</a></li>
+          <li><a href="../editor/#ae-publish">Publishing &amp; Scheduling</a></li>
+          <li><a href="../editor/#ae-revisions">Revisions &amp; Restoring</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#block-library">Block Library</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Block Library sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#bl-availability">Block Availability</a></li>
+          <li><a href="../editor/#bl-layout">Layout &amp; Structure</a></li>
+          <li><a href="../editor/#bl-cards">Cards &amp; Calls to Action</a></li>
+          <li><a href="../editor/#bl-text">Text, Lists &amp; FAQs</a></li>
+          <li><a href="../editor/#bl-news">News &amp; Posts</a></li>
+          <li><a href="../editor/#bl-people">People &amp; Reviews</a></li>
+          <li><a href="../editor/#bl-listings">Programs, Positions &amp; Jobs</a></li>
+          <li><a href="../editor/#bl-embeds">Forms &amp; Embeds</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../customizer/#customizing-theme">Customizing Theme</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Customizing Theme sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../customizer/#theme-customizer">Using the Customizer</a></li>
+          <li><a href="../customizer/#theme-colors">Colors</a></li>
+          <li><a href="../customizer/#theme-typography">Typography</a></li>
+          <li><a href="../customizer/#theme-menus">Menus</a></li>
+          <li><a href="../customizer/#theme-homepage">Homepage</a></li>
+          <li><a href="../customizer/#theme-footer">Footer</a></li>
+          <li><a href="../customizer/#theme-sidebar">Sidebar CTAs</a></li>
+          <li data-sites="travel"><a href="../customizer/#theme-programs">Programs Landing Page</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="#special-features">Special Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Special Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="#sf-brandbar">Greenheart Brand Bar</a></li>
+          <li data-sites="exchange org travel"><a href="#sf-forms">Forms</a></li>
+          <li data-sites="exchange"><a href="#sf-tables">Tables</a></li>
+          <li data-sites="exchange org travel"><a href="#sf-redirects">Redirects</a></li>
+          <li data-sites="exchange org travel"><a href="#sf-patterns">Reusable Patterns</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#reporting-issues">Reporting Issues</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Reporting Issues sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#ri-before">Before You Report</a></li>
+          <li><a href="../support/#ri-submit">How to Submit</a></li>
+          <li><a href="../support/#ri-include">What to Include</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../support/#requesting-features">Requesting Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Requesting Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../support/#rf-how">How to Request</a></li>
+          <li><a href="../support/#rf-next">What Happens Next</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main class="content" id="top">
+    <a class="embed-open" href="#" target="_blank" rel="noopener">Open in full documentation ↗</a>
+    <article class="manual">
+
+      <section class="doc-section" id="special-features">
+        <h2><span class="num">6</span>Special Features</h2>
+        <p>Tools that go beyond the editor itself.</p>
+
+        <div class="doc-sub" id="sf-brandbar" data-sites="exchange org travel">
+          <h3>Greenheart Brand Bar</h3>
+          <p>The thin green bar across the very top of every page, with links such as <strong>Programs in U.S.</strong>, <strong>Programs Abroad</strong>, <strong>Login</strong> and <strong>Donate</strong>, is the Greenheart Brand Bar. It links the Greenheart sites together and is managed centrally, not in the theme or the menus.</p>
+          <p>To request a change, use the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>.</p>
+        </div>
+
+        <div class="doc-sub" id="sf-forms" data-sites="exchange org travel">
+          <h3>Forms</h3>
+          <p>All three sites have <strong>Gravity Forms</strong> (<strong>Forms</strong> in the admin menu). To add a Gravity Form to a page, insert the <strong>Form</strong> block and choose the form. Beyond that, each site handles forms differently:</p>
+
+          <div class="type-entry" data-sites="exchange">
+            <h4>Exchange</h4>
+            <p>Program <strong>apply forms</strong> are built in Gravity Forms and integrated with the site. Exchange also supports:</p>
+            <ul>
+              <li>Embedded FormAssembly forms</li>
+              <li>Embedded Zoho forms</li>
+              <li>Links to external forms</li>
+              <li>Salesforce integrations through Gravity Forms</li>
+            </ul>
+          </div>
+
+          <div class="type-entry" data-sites="org">
+            <h4>International</h4>
+            <p>Gravity Forms only.</p>
+          </div>
+
+          <div class="type-entry" data-sites="travel">
+            <h4>Travel</h4>
+            <p><strong>FormAssembly</strong> is the default. Embed a form with the <a href="../editor/#blk-formassembly">Form Assembly Form</a> block. Gravity Forms is also available, either as a block or in the footer (see <a href="../customizer/#theme-footer">Contact Form Pre Footer</a>).</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="sf-tables" data-sites="exchange">
+          <h3>Tables</h3>
+          <p>Tables are managed in TablePress, separately from pages. You insert a table with its block, so one table can appear on several pages.</p>
+        </div>
+
+        <div class="doc-sub" id="sf-redirects" data-sites="exchange org travel">
+          <h3>Redirects</h3>
+          <p>A redirect automatically sends visitors from an old web address to a new one, so that bookmarks, search results and links from other sites keep working.</p>
+
+          <h4>When you need one</h4>
+          <ul>
+            <li>You change a page's <strong>URL slug</strong>, or move it under a different parent page.</li>
+            <li>You delete or unpublish a page that people may still link to.</li>
+            <li>You replace an old page with a new one at a different address.</li>
+          </ul>
+
+          <h4>Requesting a redirect</h4>
+          <p>Only administrators can add redirects for now. To request one, use the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a> and include:</p>
+          <ul>
+            <li>Which site</li>
+            <li>The <strong>old</strong> address (copy it from the browser before you change or delete the page)</li>
+            <li>The <strong>new</strong> address it should go to</li>
+            <li>When the change will happen, so the redirect can go live at the same time</li>
+          </ul>
+          <div class="callout tip">
+            <span class="callout-title">Tip</span>
+            <p>Request the redirect <em>before</em> you change the address, and copy the old address first. Once it's changed, the old one is easy to lose.</p>
+          </div>
+
+          <h4>For administrators</h4>
+          <div class="table-scroll">
+          <table class="data-table">
+            <thead><tr><th>Site</th><th>Plugin</th><th>Where to find it</th></tr></thead>
+            <tbody>
+              <tr data-sites="exchange"><td><span class="site-badge exchange">Exchange</span></td><td>Redirection</td><td><strong>Tools › Redirection</strong></td></tr>
+              <tr data-sites="org"><td><span class="site-badge org">International</span></td><td>Redirection</td><td><strong>Tools › Redirection</strong></td></tr>
+              <tr data-sites="travel"><td><span class="site-badge travel">Travel</span></td><td>Advanced 301 and 302 Redirect</td><td><strong>Settings › 301/302 Redirection</strong></td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p>Use a <strong>301 (permanent)</strong> redirect unless the change is temporary. On International, use Redirection, not Simple 301 Redirects.</p>
+        </div>
+
+        <div class="doc-sub" id="sf-patterns" data-sites="exchange org travel">
+          <h3>Reusable Patterns</h3>
+          <p>To reuse a group of blocks on other pages, select the blocks and save them as a pattern.</p>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+      <nav class="pager" aria-label="More pages">
+        <a class="pager-prev" href="../customizer/"><span>Previous</span>Customizing Theme</a>
+        <a class="pager-next" href="../support/"><span>Next</span>Support</a>
+      </nav>
+
+      <footer class="site-footer">
+        &copy; Greenheart International. Documentation for internal use.
+      </footer>
+    </article>
+  </main>
+
+  <script src="../assets/js/docs.js"></script>
+</body>
+</html>

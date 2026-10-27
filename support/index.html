@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support – Greenheart Documentation</title>
+  <meta name="description" content="User manual for managing the Greenheart Exchange, Greenheart International and Greenheart Travel websites.">
+  <script>
+    // Runs before paint so embed mode and the site filter never flash.
+    (function () {
+      var root = document.documentElement;
+      var params = new URLSearchParams(window.location.search);
+      var site = params.get('site');
+      if (!site) { try { site = localStorage.getItem('gh-docs-site'); } catch (e) {} }
+      if (site === 'exchange' || site === 'org' || site === 'travel') root.setAttribute('data-site', site);
+      if (params.has('embed') && params.get('embed') !== '0') root.classList.add('embed');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&family=Sanchez:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="true" aria-label="Toggle menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+    <a class="brand" href="../">
+      <img src="../assets/img/logo.svg" alt="Greenheart" width="130" height="44">
+      <span>Documentation</span>
+    </a>
+    <label class="site-filter">
+      <span>Showing</span>
+      <select id="site-filter" aria-label="Show documentation for">
+        <option value="all">All sites</option>
+        <option value="exchange">Exchange</option>
+        <option value="org">International</option>
+        <option value="travel">Travel</option>
+      </select>
+    </label>
+  </header>
+
+  <nav class="sidebar" id="sidebar" aria-label="Manual contents">
+    <p class="sidebar-label">Contents</p>
+    <ul class="toc">
+      <li class="toc-section"><div class="toc-row"><a href="../introduction/#introduction">Introduction</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Introduction sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../introduction/#intro-sites">The Three Sites</a></li>
+          <li><a href="../introduction/#intro-using">Using This Manual</a></li>
+          <li><a href="../introduction/#intro-access">Getting Access</a></li>
+          <li><a href="../introduction/#intro-password">Resetting Your Password</a></li>
+          <li><a href="../introduction/#intro-roles">User Roles</a></li>
+          <li><a href="../introduction/#intro-conventions">Conventions Used</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../content-types/#content-types">Content Types</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Content Types sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../content-types/#ct-shared">Shared Across All Sites</a></li>
+          <li data-sites="exchange"><a href="../content-types/#ct-exchange">Greenheart Exchange</a></li>
+          <li data-sites="org"><a href="../content-types/#ct-org">Greenheart International</a></li>
+          <li data-sites="travel"><a href="../content-types/#ct-travel">Greenheart Travel</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#adding-editing">Adding &amp; Editing Content</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Adding &amp; Editing Content sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#ae-editor">The Block Editor at a Glance</a></li>
+          <li><a href="../editor/#ae-page">Adding a Page</a></li>
+          <li><a href="../editor/#ae-other">Adding Other Content Types</a></li>
+          <li><a href="../editor/#ae-blocks">Working with Blocks</a></li>
+          <li><a href="../editor/#ae-media">Images &amp; Media</a></li>
+          <li><a href="../editor/#ae-filters">Categories &amp; Filters</a></li>
+          <li><a href="../editor/#ae-publish">Publishing &amp; Scheduling</a></li>
+          <li><a href="../editor/#ae-revisions">Revisions &amp; Restoring</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../editor/#block-library">Block Library</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Block Library sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../editor/#bl-availability">Block Availability</a></li>
+          <li><a href="../editor/#bl-layout">Layout &amp; Structure</a></li>
+          <li><a href="../editor/#bl-cards">Cards &amp; Calls to Action</a></li>
+          <li><a href="../editor/#bl-text">Text, Lists &amp; FAQs</a></li>
+          <li><a href="../editor/#bl-news">News &amp; Posts</a></li>
+          <li><a href="../editor/#bl-people">People &amp; Reviews</a></li>
+          <li><a href="../editor/#bl-listings">Programs, Positions &amp; Jobs</a></li>
+          <li><a href="../editor/#bl-embeds">Forms &amp; Embeds</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../customizer/#customizing-theme">Customizing Theme</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Customizing Theme sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="../customizer/#theme-customizer">Using the Customizer</a></li>
+          <li><a href="../customizer/#theme-colors">Colors</a></li>
+          <li><a href="../customizer/#theme-typography">Typography</a></li>
+          <li><a href="../customizer/#theme-menus">Menus</a></li>
+          <li><a href="../customizer/#theme-homepage">Homepage</a></li>
+          <li><a href="../customizer/#theme-footer">Footer</a></li>
+          <li><a href="../customizer/#theme-sidebar">Sidebar CTAs</a></li>
+          <li data-sites="travel"><a href="../customizer/#theme-programs">Programs Landing Page</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="../features/#special-features">Special Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Special Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li data-sites="exchange org travel"><a href="../features/#sf-brandbar">Greenheart Brand Bar</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-forms">Forms</a></li>
+          <li data-sites="exchange"><a href="../features/#sf-tables">Tables</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-redirects">Redirects</a></li>
+          <li data-sites="exchange org travel"><a href="../features/#sf-patterns">Reusable Patterns</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="#reporting-issues">Reporting Issues</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Reporting Issues sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="#ri-before">Before You Report</a></li>
+          <li><a href="#ri-submit">How to Submit</a></li>
+          <li><a href="#ri-include">What to Include</a></li>
+        </ul>
+      </li>
+      <li class="toc-section"><div class="toc-row"><a href="#requesting-features">Requesting Features</a><button class="toc-expand" type="button" aria-expanded="false" aria-label="Show Requesting Features sub-sections"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button></div>
+        <ul class="toc-sub">
+          <li><a href="#rf-how">How to Request</a></li>
+          <li><a href="#rf-next">What Happens Next</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <div class="scrim" aria-hidden="true"></div>
+
+  <main class="content" id="top">
+    <a class="embed-open" href="#" target="_blank" rel="noopener">Open in full documentation ↗</a>
+    <article class="manual">
+
+      <section class="doc-section" id="reporting-issues">
+        <h2><span class="num">7</span>Reporting Issues</h2>
+        <p>If something on a site isn't working as expected, report it so it can be fixed quickly.</p>
+
+        <div class="doc-sub" id="ri-before">
+          <h3>Before You Report</h3>
+          <ul>
+            <li>Refresh the page, or try a private/incognito window.</li>
+            <li>Check whether the problem happens in another browser.</li>
+            <li>Check the <a href="../editor/#bl-availability">block availability table</a> to make sure the feature exists on that site.</li>
+          </ul>
+        </div>
+
+        <div class="doc-sub" id="ri-submit">
+          <h3>How to Submit</h3>
+          <p>Report website issues through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>. It goes straight to the site administrator. Use one form per issue, and include the details listed under <a href="#ri-include">What to Include</a>.</p>
+          <p>The same form is used for account and login problems; see <a href="../introduction/#intro-access">Getting Access</a>.</p>
+        </div>
+
+        <div class="doc-sub" id="ri-include">
+          <h3>What to Include</h3>
+          <ul>
+            <li><strong>Which site</strong> (Exchange, International or Travel) and the page URL</li>
+            <li>What you expected to happen, and what happened instead</li>
+            <li>Steps to reproduce the problem</li>
+            <li>A screenshot, and your browser and device</li>
+          </ul>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+
+      <section class="doc-section" id="requesting-features">
+        <h2><span class="num">8</span>Requesting Features</h2>
+        <p>Have an idea that would make a site better? Feature requests are welcome.</p>
+
+        <div class="doc-sub" id="rf-how">
+          <h3>How to Request</h3>
+          <p>Describe the problem you're trying to solve, who it would help, and which site or sites it applies to. If a block exists on one site and you'd like it on another, mention that; it's usually a smaller request than a new block.</p>
+          <p>Submit your idea through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UNkpHSU0zWkJESkdKRVcwMEEzSVBPNTJNTS4u" target="_blank" rel="noopener">Feature Request Form</a>. Use one form per request.</p>
+          <div class="callout tip">
+            <span class="callout-title">Something broken?</span>
+            <p>Use the <a href="#ri-submit">Web Issue Form</a> for problems. The Feature Request Form is for new features and improvements.</p>
+          </div>
+        </div>
+
+        <div class="doc-sub" id="rf-next">
+          <h3>What Happens Next</h3>
+          <p>Requests are reviewed and prioritized by impact and effort. You'll hear back on whether and when the feature is planned.</p>
+        </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
+      </section>
+      <nav class="pager" aria-label="More pages">
+        <a class="pager-prev" href="../features/"><span>Previous</span>Special Features</a>
+      </nav>
+
+      <footer class="site-footer">
+        &copy; Greenheart International. Documentation for internal use.
+      </footer>
+    </article>
+  </main>
+
+  <script src="../assets/js/docs.js"></script>
+</body>
+</html>
