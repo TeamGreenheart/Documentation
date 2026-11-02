@@ -42,6 +42,56 @@
     </ol>
   </div>
 
+  <div class="doc-sub" id="ae-news" data-sites="org" data-anchor="news_items news-items news_source news_link">
+    <h3>Adding News Items</h3>
+    <p>News items are articles about Greenheart on other websites. Each one has its <strong>News Source</strong> set to <strong>In the News</strong>, chosen in the sidebar the same way you'd pick a category. It also needs a <strong>News Link</strong> to the article before you can publish it. For Greenheart's own announcements, add a <a href="#ct-press_releases">Press Release</a> instead.</p>
+
+    <h4>Adding an "In the News" item</h4>
+    <ol>
+      <li>Go to <strong>Greenheart Content › Press</strong> and click <strong>New</strong>.</li>
+      <li>Add the title and any other details as usual.</li>
+      <li>In the sidebar, open <strong>News Source</strong> and check <strong>In the News</strong>.</li>
+      <li>The <strong>News Link</strong> box appears. Paste the full address of the article, for example <code>https://www.example.com/story-about-us</code>.</li>
+      <li>Click <strong>Publish</strong>.</li>
+    </ol>
+    <div class="callout tip">
+      <span class="callout-title">Tip</span>
+      <p>Open the article in your browser, copy the address from the address bar and paste it in. That gives you the complete link.</p>
+    </div>
+
+    <h4>What you'll see in the editor</h4>
+    <ul>
+      <li><strong>The News Link box only shows for "In the News" items.</strong> If In the News isn't checked, the box is hidden.</li>
+      <li><strong>A yellow warning bar</strong> stays at the top of the editor while the link is missing or doesn't look like a web address. It goes away once you enter a valid link.</li>
+      <li><strong>You can still save drafts</strong> without a link and add it later. The link is only required to publish.</li>
+      <li><strong>Publishing without a link shows an error</strong>, and the item stays a draft.</li>
+      <li><strong>On items that are already live, the Update button is greyed out</strong> until the link is fixed, so a published item can't be saved without one.</li>
+    </ul>
+
+    <h4>What counts as a valid link</h4>
+    <p>A complete web address that starts with <code>http://</code> or <code>https://</code>.</p>
+    <div class="table-scroll">
+    <table class="data-table">
+      <thead><tr><th>Works</th><th>Doesn't work</th></tr></thead>
+      <tbody>
+        <tr><td><code>https://www.nytimes.com/2026/10/article</code></td><td><code>www.nytimes.com/2026/10/article</code> (missing <code>https://</code>)</td></tr>
+        <tr><td><code>http://localpaper.com/story</code></td><td><code>nytimes</code> (not a full address)</td></tr>
+        <tr><td></td><td>An empty box</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h4>Troubleshooting</h4>
+    <dl class="faq-list">
+      <dt>"In the News items need a News Link (a full https:// URL) before they can be published."</dt>
+      <dd>Check that the News Link box has a full address starting with <code>https://</code>, with no spaces before or after it.</dd>
+      <dt>I don't see "In the News" under News Source.</dt>
+      <dd>The "In the News" option (with the slug <code>news</code>) hasn't been set up on the site yet. Until it exists, the link isn't required. Ask the site administrator to add it through the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=lG2uZBnLS0OhFsRqQO3Lky9jHIs1allJo0psRmdXtA9UMEdNQUE0UTk2OFY1MUU5OVgyNUVIVVJZUi4u" target="_blank" rel="noopener">Web Issue Form</a>.</dd>
+      <dt>The Update button is greyed out on an item that's already published.</dt>
+      <dd>The item is marked In the News but has no valid link. Add the link, or uncheck In the News if it doesn't apply.</dd>
+    </dl>
+  </div>
+
   <div class="doc-sub" id="ae-blocks">
     <h3>Working with Blocks</h3>
     <p>To add a block, click <strong>+</strong> and search by name, or type <code>/</code> followed by the block name in an empty paragraph. To move a block, use the arrows in its toolbar or drag its handle. The <strong>List View</strong> button in the top toolbar shows the page's block structure, which is useful for selecting blocks nested inside other blocks.</p>

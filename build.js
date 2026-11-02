@@ -193,3 +193,51 @@ for (const page of PAGES) {
   fs.writeFileSync(path.join(dir, 'index.html'), render({ page, title: `${page.title} – ${SITE_TITLE}` }));
   console.log(page.slug + '/index.html');
 }
+
+// ---------- Handle manifest: anchors.json ----------
+// Read by the WordPress plugin (DocumentationWP) to show help icons only where docs exist.
+// A handle is any id or data-anchor name on the page. Its sites come from the element's own
+// data-sites or the nearest ancestor's, or all sites if there is none.
+
+const MANIFEST_PAGES = ['editor', 'customizer', 'content-types', 'features'];
+const ALL_SITES = ['exchange', 'org', 'travel'];
+const VOID_TAGS = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
+
+function attr(attrs, name) {
+  const m = attrs.match(new RegExp(`\\s${name}="([^"]*)"`));
+  return m ? m[1] : null;
+}
+
+function collectAnchors(html, into) {
+  const stack = []; // open elements: { tag, sites }
+  for (const m of html.replace(/<!--[\s\S]*?-->/g, '').matchAll(/<(\/?)([a-zA-Z][\w-]*)([^>]*)>/g)) {
+    const [, closing, rawTag, attrs] = m;
+    const tag = rawTag.toLowerCase();
+    if (closing) {
+      const i = stack.map((s) => s.tag).lastIndexOf(tag);
+      if (i !== -1) stack.length = i;
+      continue;
+    }
+    const own = attr(attrs, 'data-sites');
+    const sites = own ? own.split(/\s+/).filter((s) => ALL_SITES.includes(s)) : (stack.length ? stack[stack.length - 1].sites : null);
+    const names = [attr(attrs, 'id'), ...(attr(attrs, 'data-anchor') || '').split(/\s+/)].filter(Boolean);
+    for (const name of names) {
+      if (!into[name]) into[name] = new Set();
+      for (const s of sites || ALL_SITES) into[name].add(s);
+    }
+    if (!VOID_TAGS.has(tag) && !attrs.trim().endsWith('/')) stack.push({ tag, sites });
+  }
+}
+
+const manifest = { generated: new Date().toISOString(), pages: {} };
+for (const slug of MANIFEST_PAGES) {
+  const page = PAGES.find((p) => p.slug === slug);
+  if (!page) continue;
+  const found = {};
+  for (const id of page.sections) collectAnchors(sections[id].html, found);
+  manifest.pages[slug] = Object.fromEntries(
+    Object.keys(found).sort().map((name) => [name, ALL_SITES.filter((s) => found[name].has(s))])
+  );
+}
+fs.writeFileSync(path.join(OUT, 'anchors.json'), JSON.stringify(manifest, null, 2) + '\n');
+console.log('anchors.json');
