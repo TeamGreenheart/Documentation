@@ -75,26 +75,37 @@
   <div class="doc-sub" id="ct-org" data-sites="org">
     <h3>Greenheart International</h3>
 
-    <div class="type-entry" id="ct-org-news_items" data-anchor="news_items news_source">
+    <div class="type-entry" id="ct-org-news_items" data-anchor="news_items news-items news_source">
       <h4>News Items</h4>
-      <p>News coverage and Greenheart's own press releases, listed on the <code>/press/</code> page. Every news item needs a <strong>News Source</strong>, set in the News Source panel in the editor's sidebar:</p>
-      <ul>
-        <li><strong>In the News</strong>: coverage of Greenheart on another website. Fill in the <strong>News Link</strong> box with the full address of the article (starting with <code>https://</code>). On the <code>/press/</code> page, the item's card opens that article in a new tab.</li>
-        <li><strong>Press Releases</strong>: Greenheart's own announcements. Write the release in the item's content; no link is needed.</li>
-      </ul>
+      <p>Coverage of Greenheart on other websites. News items are listed on the <code>/press/</code> page together with <a href="#ct-press_releases">Press Releases</a>. Set each item's <strong>News Source</strong> to <strong>In the News</strong> in the sidebar. Then fill in the <strong>News Link</strong> box with the full address of the article, starting with <code>https://</code>. On the <code>/press/</code> page, the item's card opens that article in a new tab.</p>
+      <p>For Greenheart's own announcements, add a <a href="#ct-press_releases">Press Release</a> instead.</p>
       <dl>
-        <dt>Admin menu</dt><dd>Greenheart Content › press</dd>
+        <dt>Admin menu</dt><dd>Greenheart Content › Press</dd>
         <dt>Web address</dt><dd><code>/press/</code>, filtered by category at <code>/press/{category}/</code></dd>
         <dt>Filters</dt><dd>News Source, Categories, Tags</dd>
       </dl>
       <div class="callout warning">
         <span class="callout-title">In the News items need a link to publish</span>
-        <p>When you tick <strong>In the News</strong>, the News Link box appears and is required. Until it has a full <code>http://</code> or <code>https://</code> address, a warning stays at the top of the editor. You can still save a draft, but you can't publish or schedule the item. On an item that's already published, <strong>Update</strong> is locked until the link is fixed.</p>
+        <p>See <a href="#ae-news">Adding News Items</a> for the steps, what counts as a valid link, and troubleshooting.</p>
       </div>
-      <div class="callout">
-        <span class="callout-title">Press release pages are being retired</span>
-        <p>Press releases used to be pages under <code>/press-releases/</code>, each with a news item linking to it. Don't create new press release pages. Add a news item with the <strong>Press Releases</strong> source instead. The old pages will be removed.</p>
-      </div>
+    </div>
+
+    <div class="type-entry" id="ct-press_releases" data-anchor="press_releases">
+      <h4>Press Releases</h4>
+      <p>Greenheart's own announcements. Each press release has its own page and is also listed on the <code>/press/</code> page, mixed in with <a href="#ct-org-news_items">News Items</a> and marked <strong>Press Release</strong>. Write the release in the editor like any other content. It doesn't need a link.</p>
+      <dl>
+        <dt>Admin menu</dt><dd>Greenheart Content › Press Releases</dd>
+        <dt>Web address</dt><dd><code>/press/press-releases/…</code>, listed on <code>/press/</code> and <code>/press/{category}/</code></dd>
+        <dt>Filters</dt><dd>Categories, Tags</dd>
+      </dl>
+      <h5>Byline: Greenheart Staff or Guest Author</h5>
+      <p>The <strong>Guest Byline</strong> box in the editor's sidebar decides who the release is credited to:</p>
+      <ul>
+        <li><strong>Greenheart Staff</strong>: turn on <strong>Attribute to Greenheart Staff</strong>. The release is credited to Greenheart Staff instead of your user account.</li>
+        <li><strong>Guest Author</strong>: leave the toggle off and fill in <strong>Guest Author Name</strong>, <strong>Guest Author Title</strong> (for example "CEO, Partner Organization") and <strong>Guest Author Thumbnail</strong> (a headshot). The release then shows that person's name, title and photo in place of a WordPress author.</li>
+        <li><strong>Neither</strong>: if the toggle is off and the guest name is empty, the release is credited to the author set in WordPress.</li>
+      </ul>
+      <p>The staff toggle wins: if it's on, the guest author fields are ignored.</p>
     </div>
 
     <div class="type-entry" id="ct-events" data-anchor="events">
@@ -114,6 +125,14 @@
         <dt>Admin menu</dt><dd>Greenheart Content › Careers</dd>
         <dt>Web address</dt><dd><code>/career/…</code>, listing at <code>/careers/</code></dd>
       </dl>
+      <h5>Linking Apply Now to Paylocity</h5>
+      <p>Every career's <strong>Apply Now</strong> button must open the job's application page on Paylocity:</p>
+      <ol>
+        <li>In the sidebar, find <strong>Link an Apply Form?</strong> and choose <strong>External Link</strong>.</li>
+        <li>Save the career (Save draft or Update). The <strong>External Link</strong> box only appears after saving.</li>
+        <li>Paste the job's full Paylocity application address into <strong>External Link</strong>, then save again.</li>
+      </ol>
+      <p>To change the button's wording, use <strong>Custom CTA Text?</strong>. If you leave it empty, the button says "Apply Now".</p>
     </div>
   </div>
 

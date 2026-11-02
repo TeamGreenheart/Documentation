@@ -62,9 +62,33 @@ Any page can be opened at a specific entry using the WordPress handle as the has
 Query parameters:
 
 - `?site=exchange|org|travel` shows only that site's content. Always pass it: some handles exist on more than one site (`news_items` exists on both Exchange and International, and they work differently), and the site decides which entry opens.
-- `?embed=1` hides the header and menu for use in an iframe, and shows an "Open in full documentation" link that opens the same spot in a new tab.
+- `?embed=1` hides the header and menu for use in an iframe. A top bar shows "↩ Back to <entry>", which scrolls back to the entry the page opened at, and an "Open in full documentation" link that opens the same spot in a new tab. If the handle matches nothing (or only entries hidden for that site), a short "no documentation for this item yet" notice appears at the top instead.
 
 Example: `/customizer/?site=travel&embed=1#form_pre_footer`
+
+The parent window can trigger the Back button with a message to the iframe:
+
+```js
+iframe.contentWindow.postMessage({ source: 'gh-docs', type: 'recenter' }, '*');
+```
+
+All other messages are ignored. When framed, the page also sends `{ source: 'gh-docs', type: 'ready' }` to its parent once it has loaded (the plugin uses it to detect a docs page that failed to load), and `{ source: 'gh-docs', type: 'escape' }` when Esc is pressed inside it.
+
+### Handle manifest: `anchors.json`
+
+The build also writes `anchors.json` (published at `/Documentation/anchors.json`). It lists every handle (each `id` and `data-anchor` name) on the `editor`, `customizer`, `content-types` and `features` pages, and the sites it's visible on, taken from the element's `data-sites` or its nearest ancestor's (all three sites if there is none):
+
+```json
+{
+  "generated": "2026-11-01T12:00:00.000Z",
+  "pages": {
+    "customizer":    { "form_pre_footer": ["travel"], "theme_footer_panel": ["exchange", "org", "travel"] },
+    "content-types": { "news_items": ["exchange", "org"], "page": ["exchange", "org", "travel"] }
+  }
+}
+```
+
+The WordPress plugin uses it to show help icons only where an entry exists for that site, so adding a `data-anchor` here is all it takes to make a new icon appear (the plugin caches the file for 12 hours).
 
 Embedded pages don't overwrite the reader's remembered site choice. If the docs are served from a different domain than the sites, make sure the docs server doesn't send `X-Frame-Options: DENY` or a `frame-ancestors` policy that blocks the WordPress admin.
 

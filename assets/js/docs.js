@@ -193,6 +193,20 @@
     var name;
     try { name = decodeURIComponent(window.location.hash.slice(1)); } catch (e) { return; }
     var el = findAnchor(name);
+    var embedded = root.classList.contains('embed');
+    // Embedded, an entry hidden by the site filter counts as not documented for this site.
+    if (embedded && el && !isVisible(el)) el = null;
+    var missing = embedded && !!name && name !== 'top' && !el;
+    showMissing(missing);
+    if (missing) {
+      // A same-page hash change from the plugin can land here after an earlier target: drop it
+      // and go to the top, where the notice is.
+      if (lastTarget) lastTarget.classList.remove('is-target');
+      lastTarget = null;
+      backBtn.hidden = true;
+      if (backObserver) backObserver.disconnect();
+      window.scrollTo(0, 0);
+    }
     if (!el || el.id === 'top') return;
 
     if (lastTarget) lastTarget.classList.remove('is-target');
@@ -200,6 +214,7 @@
     lastTarget = el;
     el.scrollIntoView();
     updateEmbedLink();
+    setBackTarget(el);
   }
 
   window.addEventListener('hashchange', goToHash);
@@ -249,8 +264,89 @@
     embedLink.href = url.toString();
   }
 
+  // "↩ Back to <entry>": returns to the entry the page was opened at. The parent window can
+  // trigger the same thing with postMessage({ source: 'gh-docs', type: 'recenter' }, '*').
+
+  var backBtn = document.querySelector('.embed-back');
+  var backLabel = backBtn.querySelector('.embed-back-label');
+  var backObserver = null;
+
+  function titleOf(el) {
+    var heading = el.matches('h2, h3, h4') ? el : el.querySelector('h2, h3, h4');
+    if (!heading) {
+      var entry = el.closest('.type-entry, .block-entry, .doc-sub, .doc-section');
+      heading = entry && entry.querySelector('h2, h3, h4');
+    }
+    if (!heading) return '';
+    var text = '';
+    heading.childNodes.forEach(function (n) {
+      if (n.nodeType === 3 || (n.nodeType === 1 && !n.matches('.badges, .num'))) text += n.textContent;
+    });
+    return text.replace(/\s+/g, ' ').trim();
+  }
+
+  function setBackTarget(el) {
+    var title = titleOf(el);
+    backLabel.textContent = title ? 'Back to ' + title : 'Back';
+    backBtn.setAttribute('aria-label', title ? 'Back to ' + title : 'Back to the entry you opened');
+    backBtn.hidden = false;
+
+    if (!('IntersectionObserver' in window)) return;
+    if (backObserver) backObserver.disconnect();
+    var barH = parseInt(getComputedStyle(root).getPropertyValue('--header-h'), 10) || 0;
+    backObserver = new IntersectionObserver(function (entries) {
+      backBtn.classList.toggle('is-onscreen', entries[entries.length - 1].isIntersecting);
+    }, { rootMargin: '-' + barH + 'px 0px 0px 0px' });
+    backObserver.observe(el);
+  }
+
+  function recenter() {
+    if (!lastTarget) return;
+    lastTarget.classList.remove('is-target');
+    void lastTarget.offsetWidth; // restart the highlight animation
+    lastTarget.classList.add('is-target');
+    lastTarget.scrollIntoView();
+  }
+
+  backBtn.addEventListener('click', recenter);
+  window.addEventListener('message', function (e) {
+    var d = e.data;
+    if (d && d.source === 'gh-docs' && d.type === 'recenter') recenter();
+  });
+
+  // Tell a parent window (the WordPress help modal) that the docs loaded, and pass Esc up so
+  // it can close the modal while focus is inside this frame.
+  function tellParent(type) {
+    if (window.parent === window) return;
+    try { window.parent.postMessage({ source: 'gh-docs', type: type }, '*'); } catch (e) {}
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') tellParent('escape');
+  });
+
+  // Embedded with a handle that matches nothing (on this site): say so instead of silently
+  // staying at the top of the page.
+  var missingNotice = null;
+
+  function showMissing(show) {
+    if (!show) {
+      if (missingNotice) missingNotice.hidden = true;
+      return;
+    }
+    if (!missingNotice) {
+      missingNotice = document.createElement('div');
+      missingNotice.className = 'embed-missing';
+      missingNotice.setAttribute('role', 'status');
+      missingNotice.innerHTML = '<p>There’s no documentation for this item yet. Browse this page or use <strong>Open in full documentation</strong>.</p>';
+      var manual = document.querySelector('.manual');
+      manual.insertBefore(missingNotice, manual.firstChild);
+    }
+    missingNotice.hidden = false;
+  }
+
   // An embedded page shouldn't overwrite the reader's remembered site.
   var isEmbed = root.classList.contains('embed');
   applySite(root.getAttribute('data-site') || 'all', !isEmbed);
   goToHash();
+  tellParent('ready');
 })();
